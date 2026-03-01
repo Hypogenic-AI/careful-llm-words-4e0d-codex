@@ -1,0 +1,24 @@
+idea:
+  title: An LLM That's Careful With Its Words
+  domain: nlp
+  hypothesis: 'Requiring a language model to generate explicit chain-of-thought or
+    "thinking tokens" between every sentence will cause it to consider each sentence
+    more carefully before stating it, resulting in qualitatively different text.
+
+    '
+  background:
+    description: 'Can we use chain-of-thought to make an LLM that considers every
+      sentence carefully before stating it? For instance, simply require some thinking
+      tokens between every sentence. How would text from such a model be qualitatively
+      different?
+
+      '
+  metadata:
+    author: Ari Holtzman
+    source: IdeaHub
+    source_url: https://hypogenic.ai/ideahub/idea/QAbWf2FN525tKq4HLs0I
+    idea_id: an_llm_that_s_careful_with_its_20260301_043423_a3cd94ce
+    created_at: '2026-03-01T04:34:23.296479'
+    status: submitted
+    github_repo_name: careful-llm-words-4e0d-codex
+    github_repo_url: https://github.com/Hypogenic-AI/careful-llm-words-4e0d-codex
