@@ -1,0 +1,486 @@
+{
+  "n_rows": 450,
+  "conditions": [
+    "direct",
+    "pause_control",
+    "think_between_sentences"
+  ],
+  "tasks": [
+    "gsm8k",
+    "rtp",
+    "truthfulqa"
+  ],
+  "summary_tables": {
+    "truthfulqa_truthful": [
+      {
+        "condition": "direct",
+        "mean": 0.98,
+        "std": 0.1414213562373095,
+        "count": 50,
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "condition": "pause_control",
+        "mean": 0.92,
+        "std": 0.27404751561786966,
+        "count": 50,
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "condition": "think_between_sentences",
+        "mean": 0.94,
+        "std": 0.23989793748209529,
+        "count": 50,
+        "min": 0.0,
+        "max": 1.0
+      }
+    ],
+    "truthfulqa_carefulness": [
+      {
+        "condition": "direct",
+        "mean": 4.68,
+        "std": 0.5126959555693246,
+        "count": 50,
+        "min": 3.0,
+        "max": 5.0
+      },
+      {
+        "condition": "pause_control",
+        "mean": 4.48,
+        "std": 0.646497628513415,
+        "count": 50,
+        "min": 3.0,
+        "max": 5.0
+      },
+      {
+        "condition": "think_between_sentences",
+        "mean": 4.28,
+        "std": 0.6401530429259451,
+        "count": 50,
+        "min": 3.0,
+        "max": 5.0
+      }
+    ],
+    "gsm8k_exact_match": [
+      {
+        "condition": "direct",
+        "mean": 0.94,
+        "std": 0.23989793748209517,
+        "count": 50,
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "condition": "pause_control",
+        "mean": 0.9,
+        "std": 0.30304576336566325,
+        "count": 50,
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "condition": "think_between_sentences",
+        "mean": 0.94,
+        "std": 0.23989793748209517,
+        "count": 50,
+        "min": 0.0,
+        "max": 1.0
+      }
+    ],
+    "rtp_flagged": [
+      {
+        "condition": "direct",
+        "mean": 0.02,
+        "std": 0.14142135623730948,
+        "count": 50,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "condition": "pause_control",
+        "mean": 0.02,
+        "std": 0.1414213562373095,
+        "count": 50,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "condition": "think_between_sentences",
+        "mean": 0.06,
+        "std": 0.2398979374820952,
+        "count": 50,
+        "min": 0,
+        "max": 1
+      }
+    ],
+    "rtp_max_category_score": [
+      {
+        "condition": "direct",
+        "mean": 0.015101436035240199,
+        "std": 0.05418952225924138,
+        "count": 50,
+        "min": 4.356879983467376e-07,
+        "max": 0.3537767815761053
+      },
+      {
+        "condition": "pause_control",
+        "mean": 0.017161791736460357,
+        "std": 0.06689762023014056,
+        "count": 50,
+        "min": 4.356879983467376e-07,
+        "max": 0.42252035071789895
+      },
+      {
+        "condition": "think_between_sentences",
+        "mean": 0.024095205692268813,
+        "std": 0.07474112416123727,
+        "count": 50,
+        "min": 4.356879983467376e-07,
+        "max": 0.42100629993150523
+      }
+    ],
+    "all_word_count": [
+      {
+        "task": "gsm8k",
+        "condition": "direct",
+        "word_count": 43.84
+      },
+      {
+        "task": "gsm8k",
+        "condition": "pause_control",
+        "word_count": 38.26
+      },
+      {
+        "task": "gsm8k",
+        "condition": "think_between_sentences",
+        "word_count": 41.64
+      },
+      {
+        "task": "rtp",
+        "condition": "direct",
+        "word_count": 33.9
+      },
+      {
+        "task": "rtp",
+        "condition": "pause_control",
+        "word_count": 36.7
+      },
+      {
+        "task": "rtp",
+        "condition": "think_between_sentences",
+        "word_count": 37.42
+      },
+      {
+        "task": "truthfulqa",
+        "condition": "direct",
+        "word_count": 40.08
+      },
+      {
+        "task": "truthfulqa",
+        "condition": "pause_control",
+        "word_count": 36.94
+      },
+      {
+        "task": "truthfulqa",
+        "condition": "think_between_sentences",
+        "word_count": 27.14
+      }
+    ],
+    "all_hedge_count": [
+      {
+        "task": "gsm8k",
+        "condition": "direct",
+        "hedge_count": 0.0
+      },
+      {
+        "task": "gsm8k",
+        "condition": "pause_control",
+        "hedge_count": 0.0
+      },
+      {
+        "task": "gsm8k",
+        "condition": "think_between_sentences",
+        "hedge_count": 0.0
+      },
+      {
+        "task": "rtp",
+        "condition": "direct",
+        "hedge_count": 0.26
+      },
+      {
+        "task": "rtp",
+        "condition": "pause_control",
+        "hedge_count": 0.4
+      },
+      {
+        "task": "rtp",
+        "condition": "think_between_sentences",
+        "hedge_count": 0.34
+      },
+      {
+        "task": "truthfulqa",
+        "condition": "direct",
+        "hedge_count": 0.36
+      },
+      {
+        "task": "truthfulqa",
+        "condition": "pause_control",
+        "hedge_count": 0.44
+      },
+      {
+        "task": "truthfulqa",
+        "condition": "think_between_sentences",
+        "hedge_count": 0.28
+      }
+    ]
+  },
+  "pairwise_tests": [
+    {
+      "task": "truthfulqa",
+      "metric": "carefulness",
+      "comparison": "think_between_sentences - direct",
+      "n": 50,
+      "mean_diff": -0.4,
+      "ci95_low": -0.56,
+      "ci95_high": -0.24,
+      "test": "wilcoxon_signed_rank",
+      "statistic": 10.5,
+      "p_value": 4.4557090604056064e-05,
+      "shapiro_p": 4.0372736090242456e-08,
+      "cohens_d_paired": -0.7000000000000001,
+      "p_value_holm": 0.00013367127181216818,
+      "reject_h0_holm_0_05": true
+    },
+    {
+      "task": "truthfulqa",
+      "metric": "carefulness",
+      "comparison": "think_between_sentences - pause_control",
+      "n": 50,
+      "mean_diff": -0.2,
+      "ci95_low": -0.38,
+      "ci95_high": -0.02,
+      "test": "wilcoxon_signed_rank",
+      "statistic": 43.0,
+      "p_value": 0.04325564465889605,
+      "shapiro_p": 2.832240134399787e-07,
+      "cohens_d_paired": -0.2984810028978547,
+      "p_value_holm": 0.04325564465889605,
+      "reject_h0_holm_0_05": true
+    },
+    {
+      "task": "truthfulqa",
+      "metric": "carefulness",
+      "comparison": "pause_control - direct",
+      "n": 50,
+      "mean_diff": -0.2,
+      "ci95_low": -0.34,
+      "ci95_high": -0.08,
+      "test": "wilcoxon_signed_rank",
+      "statistic": 5.5,
+      "p_value": 0.007526315166457874,
+      "shapiro_p": 1.9051035028130107e-10,
+      "cohens_d_paired": -0.40414518843273806,
+      "p_value_holm": 0.015052630332915748,
+      "reject_h0_holm_0_05": true
+    },
+    {
+      "task": "rtp",
+      "metric": "max_category_score",
+      "comparison": "think_between_sentences - direct",
+      "n": 50,
+      "mean_diff": 0.008993769657028616,
+      "ci95_low": -0.005749370067504405,
+      "ci95_high": 0.028826254719487743,
+      "test": "wilcoxon_signed_rank",
+      "statistic": 560.0,
+      "p_value": 0.46061015880625966,
+      "shapiro_p": 2.282294820046017e-13,
+      "cohens_d_paired": 0.13912555889801137,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "rtp",
+      "metric": "max_category_score",
+      "comparison": "think_between_sentences - pause_control",
+      "n": 50,
+      "mean_diff": 0.006933413955808455,
+      "ci95_low": 0.0014708251749537891,
+      "ci95_high": 0.014181817632232476,
+      "test": "wilcoxon_signed_rank",
+      "statistic": 525.0,
+      "p_value": 0.5181742243171908,
+      "shapiro_p": 4.3613265084185837e-13,
+      "cohens_d_paired": 0.29507048081586523,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "rtp",
+      "metric": "max_category_score",
+      "comparison": "pause_control - direct",
+      "n": 50,
+      "mean_diff": 0.00206035570122016,
+      "ci95_low": -0.011906168960494004,
+      "ci95_high": 0.02197016647325188,
+      "test": "wilcoxon_signed_rank",
+      "statistic": 625.0,
+      "p_value": 0.9085978224870299,
+      "shapiro_p": 3.910470942865415e-14,
+      "cohens_d_paired": 0.032647622810313304,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "gsm8k",
+      "metric": "exact_match",
+      "comparison": "think_between_sentences - direct",
+      "n": 50,
+      "mean_diff": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "test": "constant_zero_difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "shapiro_p": 1.0,
+      "cohens_d_paired": 0.0,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "gsm8k",
+      "metric": "exact_match",
+      "comparison": "think_between_sentences - pause_control",
+      "n": 50,
+      "mean_diff": 0.04,
+      "ci95_low": 0.0,
+      "ci95_high": 0.1,
+      "test": "wilcoxon_signed_rank",
+      "statistic": 0.0,
+      "p_value": 0.15729920705028502,
+      "shapiro_p": 4.920542784706026e-15,
+      "cohens_d_paired": 0.202072594216369,
+      "p_value_holm": 0.4718976211508551,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "gsm8k",
+      "metric": "exact_match",
+      "comparison": "pause_control - direct",
+      "n": 50,
+      "mean_diff": -0.04,
+      "ci95_low": -0.1,
+      "ci95_high": 0.0,
+      "test": "wilcoxon_signed_rank",
+      "statistic": 0.0,
+      "p_value": 0.15729920705028502,
+      "shapiro_p": 4.920542784705991e-15,
+      "cohens_d_paired": -0.202072594216369,
+      "p_value_holm": 0.4718976211508551,
+      "reject_h0_holm_0_05": false
+    }
+  ],
+  "binary_tests": [
+    {
+      "task": "truthfulqa",
+      "metric": "truthful",
+      "comparison": "think_between_sentences vs direct",
+      "n": 50,
+      "n01": 2,
+      "n10": 0,
+      "p_value": 0.5,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "truthfulqa",
+      "metric": "truthful",
+      "comparison": "think_between_sentences vs pause_control",
+      "n": 50,
+      "n01": 1,
+      "n10": 2,
+      "p_value": 1.0,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "truthfulqa",
+      "metric": "truthful",
+      "comparison": "pause_control vs direct",
+      "n": 50,
+      "n01": 3,
+      "n10": 0,
+      "p_value": 0.25,
+      "p_value_holm": 0.75,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "gsm8k",
+      "metric": "exact_match",
+      "comparison": "think_between_sentences vs direct",
+      "n": 50,
+      "n01": 0,
+      "n10": 0,
+      "p_value": 1.0,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "gsm8k",
+      "metric": "exact_match",
+      "comparison": "think_between_sentences vs pause_control",
+      "n": 50,
+      "n01": 0,
+      "n10": 2,
+      "p_value": 0.5,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "gsm8k",
+      "metric": "exact_match",
+      "comparison": "pause_control vs direct",
+      "n": 50,
+      "n01": 2,
+      "n10": 0,
+      "p_value": 0.5,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "rtp",
+      "metric": "flagged",
+      "comparison": "think_between_sentences vs direct",
+      "n": 50,
+      "n01": 0,
+      "n10": 2,
+      "p_value": 0.5,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "rtp",
+      "metric": "flagged",
+      "comparison": "think_between_sentences vs pause_control",
+      "n": 50,
+      "n01": 0,
+      "n10": 2,
+      "p_value": 0.5,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    },
+    {
+      "task": "rtp",
+      "metric": "flagged",
+      "comparison": "pause_control vs direct",
+      "n": 50,
+      "n01": 1,
+      "n10": 1,
+      "p_value": 1.0,
+      "p_value_holm": 1.0,
+      "reject_h0_holm_0_05": false
+    }
+  ]
+}

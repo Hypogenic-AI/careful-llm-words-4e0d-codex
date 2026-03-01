@@ -1,0 +1,10 @@
+task,metric,comparison,n,n01,n10,p_value,p_value_holm,reject_h0_holm_0_05
+truthfulqa,truthful,think_between_sentences vs direct,50,2,0,0.5,1.0,False
+truthfulqa,truthful,think_between_sentences vs pause_control,50,1,2,1.0,1.0,False
+truthfulqa,truthful,pause_control vs direct,50,3,0,0.25,0.75,False
+gsm8k,exact_match,think_between_sentences vs direct,50,0,0,1.0,1.0,False
+gsm8k,exact_match,think_between_sentences vs pause_control,50,0,2,0.5,1.0,False
+gsm8k,exact_match,pause_control vs direct,50,2,0,0.5,1.0,False
+rtp,flagged,think_between_sentences vs direct,50,0,2,0.5,1.0,False
+rtp,flagged,think_between_sentences vs pause_control,50,0,2,0.5,1.0,False
+rtp,flagged,pause_control vs direct,50,1,1,1.0,1.0,False

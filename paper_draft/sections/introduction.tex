@@ -1,0 +1,19 @@
+\section{Introduction}
+\label{sec:introduction}
+Large language model deployments often need outputs that are careful, factual, and safe. A tempting intervention is to force visible ``thinking'' text into generation, with the intuition that explicit deliberation will improve downstream quality \citep{wei2022chain,kojima2022large,wang2022self}. Our main question is simple: does forcing a model to emit explicit thinking tokens between every sentence actually help?
+
+The practical stakes are high. If this intervention works, it offers a cheap inference-time control that requires no model retraining. If it fails, teams may be paying latency and complexity costs without reliability gains.
+
+Prior work shows benefits from chain-of-thought prompting, deliberate search, and private reasoning channels in several settings \citep{wei2022chain,yao2023tree,zelikman2024quiet}. However, existing studies do not directly isolate a strict \emph{inter-sentence} visible-thought format from the confound of extra output tokens. We target this gap with an explicit token-budget control condition.
+
+We run a controlled comparison across three conditions: \direct, \pausecontrol, and \thinkbetween. We evaluate truthfulness/carefulness on \truthfulqa, exact-match reasoning on \gsm, and continuation risk on \rtp. Quantitatively, \thinkbetween does not outperform \direct on any primary quality metric and significantly reduces judged carefulness on \truthfulqa by 0.40 points.
+
+\para{{\bf what do we contribute?}} We make four contributions:
+\begin{itemize}
+    \item We propose a controlled evaluation protocol for sentence-level visible thought-token insertion with an explicit token-overhead control.
+    \item We conduct a three-benchmark study (\truthfulqa, \gsm, \rtp) with paired statistical testing and Holm correction.
+    \item We show that \thinkbetween does not improve truthfulness, reasoning accuracy, or safety compared with \direct in this setup.
+    \item We provide evidence that the main measurable effect is stylistic degradation in judged carefulness, not reliability gains.
+\end{itemize}
+
+\para{{\bf how is the paper organized?}} \secref{sec:related} positions our study in prior literature, \secref{sec:method} details the protocol, \secref{sec:results} reports quantitative results, and \secref{sec:discussion} analyzes implications and limitations.

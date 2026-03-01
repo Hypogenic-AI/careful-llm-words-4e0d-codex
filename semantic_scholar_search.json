@@ -1,0 +1,48 @@
+[
+  {
+    "query": "chain of thought prompting language models",
+    "status": 200,
+    "results": [
+      {
+        "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+        "year": 2022,
+        "citations": 15814,
+        "url": "https://www.semanticscholar.org/paper/1b6e810ce0afd0dd093f789d2b2742d047e316d5"
+      },
+      {
+        "title": "Automatic Chain of Thought Prompting in Large Language Models",
+        "year": 2022,
+        "citations": 891,
+        "url": "https://www.semanticscholar.org/paper/90350aa626bed47b02d0c162462e5b0ca82be6b2"
+      },
+      {
+        "title": "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting",
+        "year": 2023,
+        "citations": 835,
+        "url": "https://www.semanticscholar.org/paper/7dc928f41e15f65f1267bd87b0fcfcc7e715cb56"
+      },
+      {
+        "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+        "year": 2022,
+        "citations": 6008,
+        "url": "https://www.semanticscholar.org/paper/5f19ae1135a9500940978104ec15a5b8751bc7d2"
+      },
+      {
+        "title": "BadChain: Backdoor Chain-of-Thought Prompting for Large Language Models",
+        "year": 2024,
+        "citations": 85,
+        "url": "https://www.semanticscholar.org/paper/f8d7b0245480646abd257bac60ee37804981a0d7"
+      }
+    ]
+  },
+  {
+    "query": "think before you speak language models inner monologue",
+    "status": 429,
+    "results": []
+  },
+  {
+    "query": "quiet-star think before speaking",
+    "status": 429,
+    "results": []
+  }
+]

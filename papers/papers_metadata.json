@@ -1,0 +1,92 @@
+[
+  {
+    "id": "2201.11903",
+    "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+    "authors": "Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, Denny Zhou",
+    "year": 2022,
+    "pdf": "papers/2201.11903_cot_prompting_elicits_reasoning.pdf",
+    "summary": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a 540B-parameter language model with just eight chain of thought exemplars achieves state of the art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.",
+    "url": "http://arxiv.org/abs/2201.11903v6"
+  },
+  {
+    "id": "2205.11916",
+    "title": "Large Language Models are Zero-Shot Reasoners",
+    "authors": "Takeshi Kojima, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, Yusuke Iwasawa",
+    "year": 2022,
+    "pdf": "papers/2205.11916_zero_shot_cot.pdf",
+    "summary": "Pretrained large language models (LLMs) are widely used in many sub-fields of natural language processing (NLP) and generally known as excellent few-shot learners with task-specific exemplars. Notably, chain of thought (CoT) prompting, a recent technique for eliciting complex multi-step reasoning through step-by-step answer examples, achieved the state-of-the-art performances in arithmetics and symbolic reasoning, difficult system-2 tasks that do not follow the standard scaling laws for LLMs. While these successes are often attributed to LLMs' ability for few-shot learning, we show that LLMs are decent zero-shot reasoners by simply adding \"Let's think step by step\" before each answer. Experimental results demonstrate that our Zero-shot-CoT, using the same single prompt template, significantly outperforms zero-shot LLM performances on diverse benchmark reasoning tasks including arithmetics (MultiArith, GSM8K, AQUA-RAT, SVAMP), symbolic reasoning (Last Letter, Coin Flip), and other logical reasoning tasks (Date Understanding, Tracking Shuffled Objects), without any hand-crafted few-shot examples, e.g. increasing the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with large InstructGPT model (text-davinci-002), as well as similar magnitudes of improvements with another off-the-shelf large model, 540B parameter PaLM. The versatility of this single prompt across very diverse reasoning tasks hints at untapped and understudied fundamental zero-shot capabilities of LLMs, suggesting high-level, multi-task broad cognitive capabilities may be extracted by simple prompting. We hope our work not only serves as the minimal strongest zero-shot baseline for the challenging reasoning benchmarks, but also highlights the importance of carefully exploring and analyzing the enormous zero-shot knowledge hidden inside LLMs before crafting finetuning datasets or few-shot exemplars.",
+    "url": "http://arxiv.org/abs/2205.11916v4"
+  },
+  {
+    "id": "2203.11171",
+    "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+    "authors": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou",
+    "year": 2022,
+    "pdf": "papers/2203.11171_self_consistency_cot.pdf",
+    "summary": "Chain-of-thought prompting combined with pre-trained large language models has achieved encouraging results on complex reasoning tasks. In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Self-consistency leverages the intuition that a complex reasoning problem typically admits multiple different ways of thinking leading to its unique correct answer. Our extensive empirical evaluation shows that self-consistency boosts the performance of chain-of-thought prompting with a striking margin on a range of popular arithmetic and commonsense reasoning benchmarks, including GSM8K (+17.9%), SVAMP (+11.0%), AQuA (+12.2%), StrategyQA (+6.4%) and ARC-challenge (+3.9%).",
+    "url": "http://arxiv.org/abs/2203.11171v4"
+  },
+  {
+    "id": "2305.10601",
+    "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+    "authors": "Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, Karthik Narasimhan",
+    "year": 2023,
+    "pdf": "papers/2305.10601_tree_of_thoughts.pdf",
+    "summary": "Language models are increasingly being deployed for general problem solving across a wide range of tasks, but are still confined to token-level, left-to-right decision-making processes during inference. This means they can fall short in tasks that require exploration, strategic lookahead, or where initial decisions play a pivotal role. To surmount these challenges, we introduce a new framework for language model inference, Tree of Thoughts (ToT), which generalizes over the popular Chain of Thought approach to prompting language models, and enables exploration over coherent units of text (thoughts) that serve as intermediate steps toward problem solving. ToT allows LMs to perform deliberate decision making by considering multiple different reasoning paths and self-evaluating choices to decide the next course of action, as well as looking ahead or backtracking when necessary to make global choices. Our experiments show that ToT significantly enhances language models' problem-solving abilities on three novel tasks requiring non-trivial planning or search: Game of 24, Creative Writing, and Mini Crosswords. For instance, in Game of 24, while GPT-4 with chain-of-thought prompting only solved 4% of tasks, our method achieved a success rate of 74%. Code repo with all prompts: https://github.com/princeton-nlp/tree-of-thought-llm.",
+    "url": "http://arxiv.org/abs/2305.10601v2"
+  },
+  {
+    "id": "2305.17306",
+    "title": "Chain-of-Thought Hub: A Continuous Effort to Measure Large Language Models' Reasoning Performance",
+    "authors": "Yao Fu, Litu Ou, Mingyu Chen, Yuhao Wan, Hao Peng, Tushar Khot",
+    "year": 2023,
+    "pdf": "papers/2305.17306_cot_hub.pdf",
+    "summary": "As large language models (LLMs) are continuously being developed, their evaluation becomes increasingly important yet challenging. This work proposes Chain-of-Thought Hub, an open-source evaluation suite on the multi-step reasoning capabilities of large language models. We are interested in this setting for two reasons: (1) from the behavior of GPT and PaLM model family, we observe that complex reasoning is likely to be a key differentiator between weaker and stronger LLMs; (2) we envisage large language models to become the next-generation computational platform and foster an ecosystem of LLM-based new applications, this naturally requires the foundation models to perform complex tasks that often involve the composition of linguistic and logical operations. Our approach is to compile a suite of challenging reasoning benchmarks to track the progress of LLMs. Our current results show that: (1) model scale clearly correlates with reasoning capabilities; (2) As of May 2023, Claude-v1.3 and PaLM-2 are the only two models that are comparable with GPT-4, while open-sourced models still lag behind; (3) LLaMA-65B performs closely to code-davinci-002, indicating that with successful further development such as reinforcement learning from human feedback (RLHF), it has great potential to be close to GPT-3.5-Turbo. Our results also suggest that for the open-source efforts to catch up, the community may focus more on building better base models and exploring RLHF.",
+    "url": "http://arxiv.org/abs/2305.17306v1"
+  },
+  {
+    "id": "2305.19835",
+    "title": "Deliberate then Generate: Enhanced Prompting Framework for Text Generation",
+    "authors": "Bei Li, Rui Wang, Junliang Guo, Kaitao Song, Xu Tan, Hany Hassan, Arul Menezes, Tong Xiao, Jiang Bian, JingBo Zhu",
+    "year": 2023,
+    "pdf": "papers/2305.19835_deliberate_then_generate.pdf",
+    "summary": "Large language models (LLMs) have shown remarkable success across a wide range of natural language generation tasks, where proper prompt designs make great impacts. While existing prompting methods are normally restricted to providing correct information, in this paper, we encourage the model to deliberate by proposing a novel Deliberate then Generate (DTG) prompting framework, which consists of error detection instructions and candidates that may contain errors. DTG is a simple yet effective technique that can be applied to various text generation tasks with minimal modifications. We conduct extensive experiments on 20+ datasets across 7 text generation tasks, including summarization, translation, dialogue, and more. We show that DTG consistently outperforms existing prompting methods and achieves state-of-the-art performance on multiple text generation tasks. We also provide in-depth analyses to reveal the underlying mechanisms of DTG, which may inspire future research on prompting for LLMs.",
+    "url": "http://arxiv.org/abs/2305.19835v1"
+  },
+  {
+    "id": "2311.07445",
+    "title": "Think Before You Speak: Cultivating Communication Skills of Large Language Models via Inner Monologue",
+    "authors": "Junkai Zhou, Liang Pang, Huawei Shen, Xueqi Cheng",
+    "year": 2023,
+    "pdf": "papers/2311.07445_think_before_you_speak_inner_monologue.pdf",
+    "summary": "The emergence of large language models (LLMs) further improves the capabilities of open-domain dialogue systems and can generate fluent, coherent, and diverse responses. However, LLMs still lack a crucial ability: communication skills. This limitation renders them more like information seeking tools rather than anthropomorphic chatbots. Communication skills, such as topic transition, proactively asking questions, concept guidance, empathy, and summarising often should be taken into consideration, to make LLMs more anthropomorphic and proactive during the conversation, thereby increasing the interest of users and attracting them to chat for longer. However, enabling these communication skills in black-box LLMs remains a key challenge because they do not have the same utterance formation mode as real people: think before speaking. Inspired by linguistics and cognitive science, we empower LLMs with communication skills through inner monologues. To evaluate various communication skills, we construct a benchmark named Cskills, which can also more comprehensively evaluate the dialogue generation ability of the model. Experimental results show that the proposed CSIM strategy improves the backbone models and outperforms the baselines.",
+    "url": "http://arxiv.org/abs/2311.07445v2"
+  },
+  {
+    "id": "2403.09629",
+    "title": "Quiet-STaR: Language Models Can Teach Themselves to Think Before Speaking",
+    "authors": "Eric Zelikman, Georges Harik, Yijia Shao, Varuna Jayasiri, Nick Haber, Noah D. Goodman",
+    "year": 2024,
+    "pdf": "papers/2403.09629_quiet_star_think_before_speaking.pdf",
+    "summary": "When writing and talking, people sometimes pause to think. Although reasoning-focused works have often framed reasoning as a method of answering questions or completing agentic tasks, reasoning is implicit in almost all written text. For example, this applies to the steps not stated between the lines of a proof or to the theory of mind underlying a conversation. In the Self-Taught Reasoner (STaR, Zelikman et al. 2022), useful thinking is learned by inferring rationales from few-shot examples in question-answering and learning from those that lead to a correct answer. This is a highly constrained setting -- ideally, a language model could instead learn to infer unstated rationales in arbitrary text. We present Quiet-STaR, a generalization of STaR in which LMs learn to generate rationales at each token to explain future text, improving their predictions. We address key challenges, including 1) the computational cost of generating continuations, 2) the fact that the LM does not initially know how to generate or use internal thoughts, and 3) the need to predict beyond individual next tokens. To resolve these, we propose a tokenwise parallel sampling algorithm, using learnable tokens indicating a thought's start and end, and an extended teacher-forcing technique. Encouragingly, generated rationales disproportionately help model difficult-to-predict tokens and improve the LM's ability to directly answer difficult questions. In particular, after continued pretraining of an LM on a corpus of internet text with Quiet-STaR, we find zero-shot improvements on GSM8K (5.9%$\\rightarrow$10.9%) and CommonsenseQA (36.3%$\\rightarrow$47.2%) and observe a perplexity improvement of difficult tokens in natural text. Crucially, these improvements require no fine-tuning on these tasks. Quiet-STaR marks a step towards LMs that can learn to reason in a more general and scalable way.",
+    "url": "http://arxiv.org/abs/2403.09629v2"
+  },
+  {
+    "id": "2406.06592",
+    "title": "Improve Mathematical Reasoning in Language Models by Automated Process Supervision",
+    "authors": "Liangchen Luo, Yinxiao Liu, Rosanne Liu, Samrat Phatale, Meiqi Guo, Harsh Lara, Yunxuan Li, Lei Shu, Yun Zhu, Lei Meng, Jiao Sun, Abhinav Rastogi",
+    "year": 2024,
+    "pdf": "papers/2406.06592_automated_process_supervision_reasoning.pdf",
+    "summary": "Complex multi-step reasoning tasks, such as solving mathematical problems or generating code, remain a significant hurdle for even the most advanced large language models (LLMs). Verifying LLM outputs with an Outcome Reward Model (ORM) is a standard inference-time technique aimed at enhancing the reasoning performance of LLMs. However, this still proves insufficient for reasoning tasks with a lengthy or multi-hop reasoning chain, where the intermediate outcomes are neither properly rewarded nor penalized. Process supervision addresses this limitation by assigning intermediate rewards during the reasoning process. To date, the methods used to collect process supervision data have relied on either human annotation or per-step Monte Carlo estimation, both prohibitively expensive to scale, thus hindering the broad application of this technique. In response to this challenge, we propose a novel divide-and-conquer style Monte Carlo Tree Search (MCTS) algorithm named \\textit{OmegaPRM} for the efficient collection of high-quality process supervision data. This algorithm swiftly identifies the first error in the Chain of Thought (CoT) with binary search and balances the positive and negative examples, thereby ensuring both efficiency and quality. As a result, we are able to collect over 1.5 million process supervision annotations to train Process Reward Models (PRMs). This fully automated process supervision alongside the weighted self-consistency algorithm is able to enhance LLMs' math reasoning performances. We improved the success rates of the instruction-tuned Gemini Pro model from 51\\% to 69.4\\% on MATH500 and from 86.4\\% to 93.6\\% on GSM8K. Similarly, we boosted the success rates of Gemma2 27B from 42.3\\% to 58.2\\% on MATH500 and from 74.0\\% to 92.2\\% on GSM8K. The entire process operates without any human intervention or supervision, making our method both financially and ...",
+    "url": "http://arxiv.org/abs/2406.06592v2"
+  },
+  {
+    "id": "2502.10581",
+    "title": "Do We Need to Verify Step by Step? Rethinking Process Supervision from a Theoretical Perspective",
+    "authors": "Zeyu Jia, Alexander Rakhlin, Tengyang Xie",
+    "year": 2025,
+    "pdf": "papers/2502.10581_verify_step_by_step_process_supervision.pdf",
+    "summary": "As large language models have evolved, it has become crucial to distinguish between process supervision and outcome supervision -- two key reinforcement learning approaches to complex reasoning tasks. While process supervision offers intuitive advantages for long-term credit assignment, the precise relationship between these paradigms has remained an open question. Conventional wisdom suggests that outcome supervision is fundamentally more challenging due to the trajectory-level coverage problem, leading to significant investment in collecting fine-grained process supervision data. In this paper, we take steps towards resolving this debate. Our main theorem shows that, under standard data coverage assumptions, reinforcement learning through outcome supervision is no more statistically difficult than through process supervision, up to polynomial factors in horizon. At the core of this result lies the novel Change of Trajectory Measure Lemma -- a technical tool that bridges return-based trajectory measure and step-level distribution shift. Furthermore, for settings with access to a verifier or a rollout capability, we prove that any policy's advantage function can serve as an optimal process reward model, providing a direct connection between outcome and process supervision. These findings suggest that the empirically observed performance gap -- if any -- between outcome and process supervision likely stems from algorithmic limitations rather than inherent statistical difficulties, potentially transforming how we approach data collection and algorithm design for reinforcement learning.",
+    "url": "http://arxiv.org/abs/2502.10581v2"
+  }
+]

@@ -1,0 +1,9 @@
+\section{Discussion}
+\label{sec:discussion}
+\para{{\bf interpretation.}} The central hypothesis was that explicit sentence-level ``thinking'' would increase care and reliability. Our evidence does not support that claim for this setup. The clearest effect is a \decrease in judged carefulness on \truthfulqa, while truthfulness, math accuracy, and moderation outcomes do not improve.
+
+\para{{\bf why might this happen?}} We observe three plausible mechanisms. First, rigid tag insertion constrains response flow and can reduce natural explanatory structure. Second, visible tags may consume output budget and shorten useful content; in \truthfulqa, mean word count drops from 40.08 (\direct) to 27.14 (\thinkbetween). Third, explicit thought text may be stylistic rather than functional if the model does not use it for meaningful verification.
+
+\para{{\bf limitations.}} This study uses one generation model family (\genmodel), one temperature setting, and 50 sampled items per task. \truthfulqa scoring relies on an LLM judge, which introduces evaluator-model dependence. The forced three-sentence style may itself influence quality independent of the thought-tag idea.
+
+\para{{\bf broader implications.}} For production systems, visible thought-token insertion should be treated as a controllable style choice, not a safety or factuality guarantee. Methods with stronger empirical support include retrieval grounding, critique-and-revise pipelines, and explicit external verification.

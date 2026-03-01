@@ -1,0 +1,910 @@
+You are an academic paper writer. Generate a complete NEURIPS style paper
+based on the experiment results provided.
+
+════════════════════════════════════════════════════════════════════════════════
+                         IMPORTANT: BEFORE YOU START
+════════════════════════════════════════════════════════════════════════════════
+
+Before writing any content, you MUST complete these steps:
+
+1. READ THE SKILL: Review the paper-writer skill at .codex/skills/paper-writer/SKILL.md
+2. READ THE STYLE GUIDE: Study templates/paper_writing/lab_style_guide.md carefully
+3. REVIEW EXAMPLES: Browse paper_examples/ for formatting and language patterns:
+   - Look at sections/1.introduction.tex for language style
+   - Look at tables/*.tex for table formatting
+   - Look at commands/*.tex for macro usage
+4. VERIFY COMMAND TEMPLATES: Command templates (math.tex, general.tex, macros.tex) are pre-copied to paper_draft/commands/
+
+CRITICAL: Reference example papers for FORMATTING and LANGUAGE STYLE only.
+Do NOT copy content, phrasing, or narrative structure from the example papers.
+The examples are in a different research domain - focus only on presentation style.
+
+════════════════════════════════════════════════════════════════════════════════
+                            EXPERIMENT REPORT
+════════════════════════════════════════════════════════════════════════════════
+
+# 1. Executive Summary
+
+**Research question:** Does forcing an LLM to insert explicit &#34;thinking tokens&#34; between every sentence make outputs more careful and qualitatively different?
+
+**Key finding:** In this controlled experiment, enforced inter-sentence thinking tokens (`[THINK]...[/THINK]`) did **not** improve truthfulness, GSM8K accuracy, or safety outcomes versus direct prompting; they significantly reduced judged carefulness on TruthfulQA compared with direct prompting.
+
+**Practical implication:** Adding mandatory visible thought tokens between every sentence is not a reliable way to make output safer or more accurate. If used, it should be treated as a style/control intervention, not a quality-improvement guarantee.
+
+# 2. Goal
+
+We tested the hypothesis that requiring explicit thought tokens between every sentence causes more careful generation.
+
+Why this matters: if true, this would provide a cheap inference-time safety/quality control without retraining. The expected impact was improved factual caution, reasoning reliability, and safer continuation behavior.
+
+# 3. Data Construction
+
+## Dataset Description
+
+- **TruthfulQA (generation)**
+  - Source: HF `truthful_qa`, config `generation`
+  - Local: `datasets/truthful_qa/hf`
+  - Size used in experiment: 50 sampled items (from 817 validation)
+  - Purpose: factual truthfulness and careful wording
+
+- **GSM8K (main)**
+  - Source: HF `gsm8k`, config `main`
+  - Local: `datasets/gsm8k/hf`
+  - Size used in experiment: 50 sampled items (from 1319 test)
+  - Purpose: objective reasoning correctness (numeric exact match)
+
+- **RealToxicityPrompts subset**
+  - Source: HF `allenai/real-toxicity-prompts`
+  - Local: `datasets/real_toxicity_prompts/hf_train20k`
+  - Size used in experiment: 50 sampled items (from 20,000 subset)
+  - Purpose: safety/toxicity risk under continuation
+
+## Example Samples
+
+| Dataset | Example Prompt |
+|---|---|
+| TruthfulQA | &#34;What happens to you if you eat watermelon seeds?&#34; |
+| GSM8K | &#34;Janet’s ducks lay 16 eggs per day... How much in dollars does she make...&#34; |
+| RTP | &#34;Corruption involving the contractors is the chief culprit... according to a recent&#34; |
+
+## Data Quality
+
+Checks performed on full local datasets before sampling:
+- Missing values (key fields): **0.0%** for all three datasets
+- Duplicate keys:
+  - TruthfulQA questions: **0** duplicates
+  - GSM8K questions: **0** duplicates
+  - RTP prompt text: **47** duplicates out of 20,000
+- RTP prompt toxicity distribution (subset metadata):
+  - Mean: **0.0866**
+  - 95th percentile: **0.2236**
+  - Max: **0.6519**
+
+## Preprocessing Steps
+
+1. Loaded datasets from local disk using `datasets.load_from_disk`.
+2. Deterministic sampling with seed 42 (`50` per dataset).
+3. Built three condition-specific prompt templates.
+4. Normalized outputs by stripping tags (`[THINK]`, `[PAUSE]`) for downstream textual features.
+5. For GSM8K, parsed `FINAL_ANSWER` and normalized numeric equality (`2` equals `2.00`).
+
+## Train/Val/Test Splits
+
+No model training occurred. We ran inference-only evaluation on fixed sampled subsets from benchmark test/validation splits.
+
+# 4. Experiment Description
+
+## Methodology
+
+### High-Level Approach
+
+We compared three prompting conditions on identical item sets:
+1. `direct`
+2. `pause_control` (forced non-reasoning token block between sentences)
+3. `think_between_sentences` (forced `[THINK]` block between sentences)
+
+This isolates whether effects come from deliberate thought content vs simply inserting extra tokens.
+
+### Why This Method?
+
+- Directly tests user hypothesis: mandatory inter-sentence thought tokens.
+- Includes confound control (`pause_control`) for extra-token overhead.
+- Uses real modern API models and real benchmark datasets.
+
+## Implementation Details
+
+### Tools and Libraries
+
+- Python 3.12.8
+- datasets 4.6.1
+- openai 2.24.0
+- numpy 2.3.5
+- pandas 2.3.3
+- scipy 1.17.1
+- statsmodels 0.14.6
+- matplotlib 3.10.8
+- seaborn 0.13.2
+
+### Models
+
+- Generation model: `gpt-4.1`
+- Judge model (TruthfulQA rubric scoring): `gpt-4.1-mini`
+- Safety model: `omni-moderation-latest`
+
+### Hyperparameters
+
+| Parameter | Value | Selection Method |
+|---|---:|---|
+| temperature | 0.2 | fixed for controlled comparisons |
+| max_output_tokens | 320 | enough for 3-sentence format + tags |
+| seed | 42 | reproducibility |
+| n per dataset | 50 | balanced quick-but-statistical run |
+
+### Analysis Pipeline
+
+1. Run generation under each condition for each task.
+2. Score:
+   - TruthfulQA: LLM judge -&gt; `truthful` (0/1), `carefulness` (1-5)
+   - GSM8K: numeric exact match
+   - RTP: moderation flagged + max category score
+3. Compute descriptive stats and paired tests.
+4. Apply Holm correction within each test family.
+5. Generate plots and CSV/JSON outputs.
+
+## Experimental Protocol
+
+### Reproducibility Information
+
+- Runs: one full deterministic run (temperature fixed at 0.2)
+- Seed: 42
+- Hardware detected: 2x NVIDIA RTX 3090 (24GB each)
+- GPU usage: not required (API-based experiment)
+- Execution time: ~13.84 minutes wall-clock for 450 generations + scoring
+
+### Prompt Compliance
+
+- Think condition with &gt;=2 `[THINK]` blocks: **50/50** for each task
+- Pause condition with &gt;=2 `[PAUSE]` blocks: **50/50** for each task
+- Direct condition tag leakage: **0/50** for each task
+
+### Token Usage
+
+- Main generation tokens: input **41,706**, output **36,774**
+- Judge tokens: input **23,858**, output **11,336**
+- Total: input **65,564**, output **48,110**
+
+## Raw Results
+
+### Tables
+
+**TruthfulQA**
+
+| Condition | Truthful rate | Carefulness mean |
+|---|---:|---:|
+| direct | 0.98 | 4.68 |
+| pause_control | 0.92 | 4.48 |
+| think_between_sentences | 0.94 | 4.28 |
+
+**GSM8K**
+
+| Condition | Exact match |
+|---|---:|
+| direct | 0.94 |
+| pause_control | 0.90 |
+| think_between_sentences | 0.94 |
+
+**RealToxicityPrompts**
+
+| Condition | Flagged rate | Mean max category score |
+|---|---:|---:|
+| direct | 0.02 | 0.0151 |
+| pause_control | 0.02 | 0.0172 |
+| think_between_sentences | 0.06 | 0.0241 |
+
+### Statistical Comparisons (primary)
+
+- **TruthfulQA carefulness (`think - direct`)**:
+  - mean diff = **-0.40**, 95% CI **[-0.56, -0.24]**
+  - Wilcoxon p = **4.46e-05**, Holm-adjusted p = **1.34e-04**
+  - Cohen&#39;s d (paired) = **-0.70**
+
+- **TruthfulQA truthful binary (`think vs direct`)**:
+  - McNemar p = **0.50** (not significant)
+
+- **GSM8K exact match (`think - direct`)**:
+  - mean diff = **0.00**, 95% CI **[0.00, 0.00]**
+  - constant-zero paired difference, p = **1.00**
+
+- **RTP max category score (`think - direct`)**:
+  - mean diff = **+0.0090**, 95% CI **[-0.0057, 0.0288]**
+  - Wilcoxon p = **0.461**, Holm p = **1.00**
+
+- **RTP flagged binary (`think vs direct`)**:
+  - McNemar p = **0.50** (not significant)
+
+### Visualizations
+
+Generated under `results/plots/`:
+- `truthfulqa_truthful.png`
+- `truthfulqa_carefulness.png`
+- `gsm8k_exact_match.png`
+- `rtp_flagged.png`
+- `rtp_max_category_score.png`
+- `truthfulqa_hedge_count.png`
+
+### Output Locations
+
+- Raw outputs: `results/raw_outputs.jsonl`
+- Flattened outputs: `results/flat_outputs.csv`
+- Summary metrics: `results/metrics_summary.json`
+- Pairwise tests: `results/pairwise_tests.csv`
+- Binary tests: `results/binary_tests.csv`
+- Plots: `results/plots/`
+- Scripts: `src/run_experiments.py`, `src/analyze_results.py`
+
+# 5. Result Analysis
+
+## Key Findings
+
+1. Forcing `[THINK]` blocks between every sentence did **not** improve TruthfulQA truthfulness versus direct prompting.
+2. It significantly **decreased judged carefulness** relative to direct prompting.
+3. GSM8K exact-match performance for think and direct was identical in this sample.
+4. Safety metrics on RTP did not improve with think tokens; flagged rate was numerically higher in think condition (not significant).
+
+## Hypothesis Testing Results
+
+- H1 (truthfulness improvement): **Not supported**.
+- H2 (reasoning improvement): **Not supported**.
+- H3 (safety improvement): **Not supported**.
+- H4 (qualitative difference): **Partially supported** (style changed, but not beneficial on core metrics).
+
+## Comparison to Baselines
+
+- `think_between_sentences` vs `direct`:
+  - TruthfulQA truthful: -4 percentage points (not significant)
+  - TruthfulQA carefulness: -0.40 points (significant)
+  - GSM8K: 0-point difference
+  - RTP flagged: +4 percentage points (not significant)
+
+- `think_between_sentences` vs `pause_control`:
+  - Generally small/non-significant differences except lower carefulness score.
+
+Interpretation: the inter-sentence thought-token requirement does not outperform controls and may degrade judged answer quality in factual QA style.
+
+## Surprises and Insights
+
+- Expected gain from “forced deliberation” did not materialize.
+- The token-budget control and think condition were often similar, suggesting token overhead/style constraints dominate over explicit mini-reasoning traces.
+- In some TruthfulQA items, think-format outputs became shorter or dropped useful contextual detail.
+
+## Error Analysis
+
+Representative failure patterns:
+- **Compression/oversimplification:** think outputs occasionally omitted caveats present in direct outputs.
+- **Format-induced awkwardness:** strict sentence+tag structure sometimes reduced natural explanatory flow.
+- **Safety false positives:** some flagged RTP outputs were neutral but quoted high-risk language from prompt context.
+
+## Limitations
+
+- Single generation model family (`gpt-4.1`) and one run per item.
+- Truthfulness evaluation uses LLM-as-judge (rubric helps but can introduce evaluator bias).
+- Sample size is moderate (50/task), not full-benchmark scale.
+- Forced 3-sentence structure may itself influence quality independent of thought content.
+- This study tests visible thought blocks; hidden internal reasoning behavior is not directly measured.
+
+# 6. Conclusions
+
+Mandatory visible inter-sentence thinking tokens did not make this LLM materially more accurate, truthful, or safe in our tests. The strongest measurable effect was a reduction in judged carefulness on TruthfulQA versus direct prompting. In practice, this mechanism appears to alter style more than reliability.
+
+Implication: teams seeking safer or more factual outputs should prefer verified methods (retrieval grounding, critique-and-revise loops, external verification) over naive sentence-by-sentence thought-token insertion.
+
+Confidence: **moderate** for this prompting setup and model, lower for broader generalization across architectures and larger samples.
+
+# 7. Next Steps
+
+## Immediate Follow-ups
+
+1. Test hidden two-pass drafting (private deliberation then final answer) against visible-tag formats.
+2. Increase sample size (e.g., 200/task) and repeat with additional models (e.g., GPT-5, Claude Sonnet 4.5).
+3. Add human evaluation for readability/trust/calibrated uncertainty.
+
+## Alternative Approaches
+
+- Self-refinement loops with explicit verification checkpoints.
+- Retrieval-backed factual grounding before each sentence.
+- Process supervision or verifier models for claim-level checking.
+
+## Broader Extensions
+
+- Evaluate in high-stakes domains (medical/legal) with domain-specific factual checkers.
+- Study latency/cost-quality trade-offs for production deployment.
+
+## Open Questions
+
+- Do hidden deliberation channels outperform visible thought tags consistently?
+- Can better-designed inter-sentence verification prompts avoid quality degradation?
+- Which tasks benefit from sentence-level planning versus document-level planning?
+
+# References
+
+- Wei et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.
+- Kojima et al. (2022). Large Language Models are Zero-Shot Reasoners.
+- Wang et al. (2022). Self-Consistency Improves Chain of Thought Reasoning in Language Models.
+- Yao et al. (2023). Tree of Thoughts: Deliberate Problem Solving with Large Language Models.
+- Fu et al. (2023). Chain-of-Thought Hub.
+- Li et al. (2023). Deliberate then Generate.
+- Zhou et al. (2023). Think Before You Speak.
+- Zelikman et al. (2024). Quiet-STaR.
+- Automated process supervision and step-verification analyses (2024-2025), as listed in `papers/`.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                            RESEARCH PLAN
+════════════════════════════════════════════════════════════════════════════════
+
+# Research Plan: An LLM That&#39;s Careful With Its Words
+
+## Motivation &amp; Novelty Assessment
+
+### Why This Research Matters
+If simple prompting constraints can make model outputs more careful at the sentence level, this offers a low-cost intervention for factuality and safety without retraining. This matters for deployment settings where risky wording, overconfident claims, or toxic continuations are unacceptable. The main beneficiaries are teams shipping LLM writing assistants, QA systems, and conversational tools that must balance fluency with caution.
+
+### Gap in Existing Work
+Prior work studies chain-of-thought, self-consistency, tree search, inner monologue, and process supervision, but the literature review shows little direct testing of a strict &#34;between every sentence&#34; thought-token requirement for open-ended generation. Existing evaluations also emphasize final-task accuracy more than sentence-level caution and qualitative writing differences. There is also an unresolved confound: gains from thought prompting may come from extra token budget rather than better reasoning.
+
+### Our Novel Contribution
+We test a concrete, controlled variant: enforce explicit inter-sentence tokens for every sentence and compare it to both a direct baseline and a token-budget control with non-reasoning pause tokens. This isolates whether qualitative differences are specific to deliberate thought traces versus merely inserting extra tokens. We evaluate across truthfulness, reasoning accuracy, and safety continuation behavior.
+
+### Experiment Justification
+- Experiment 1 (TruthfulQA generation): Needed to test whether inter-sentence thought tokens improve factual caution/truthfulness versus baseline and token-budget control.
+- Experiment 2 (GSM8K reasoning): Needed to test whether this intervention improves objective reasoning correctness (numeric exact match).
+- Experiment 3 (RealToxicityPrompts continuation): Needed to test whether forced deliberation changes unsafe wording behavior under difficult prompts.
+- Experiment 4 (Qualitative style analysis): Needed to characterize how outputs differ (hedging, specificity, sentence structure, verbosity, self-correction).
+
+## Research Question
+Does requiring an LLM to emit explicit &#34;thinking tokens&#34; between every sentence produce more careful, qualitatively different text than standard prompting, beyond the effect of extra token usage alone?
+
+## Background and Motivation
+The resource set includes CoT, Zero-shot CoT, Self-Consistency, Tree-of-Thought, Deliberate-then-Generate, Think-Before-You-Speak, and Quiet-STaR. Together these suggest deliberate intermediate reasoning can help some tasks, but they do not directly test a strict sentence-by-sentence insertion protocol in open-ended outputs. We evaluate this protocol as an inference-time intervention with no retraining.
+
+## Hypothesis Decomposition
+- H1 (Truthfulness): Inter-sentence thinking tokens increase judged truthfulness/carefulness versus direct baseline.
+- H2 (Reasoning): Inter-sentence thinking tokens increase GSM8K exact-match accuracy versus direct baseline.
+- H3 (Safety): Inter-sentence thinking tokens reduce moderation risk scores on RealToxicityPrompts continuations.
+- H4 (Qualitative shift): Inter-sentence thinking tokens increase hedging/qualification and self-correction markers, producing visibly more deliberative style.
+- Alternative explanation A1: Any changes come from longer outputs, not reasoning. Addressed via a pause-token control.
+
+Independent variable:
+- Prompt condition (`direct`, `pause_control`, `think_between_sentences`).
+
+Dependent variables:
+- Truthfulness judge score (0-1), GSM8K exact match, moderation category scores, flagged rate, and qualitative style metrics.
+
+## Proposed Methodology
+
+### Approach
+Use one strong real API model (`gpt-4.1`) for generation across all conditions and tasks. Use separate model-based judging (`gpt-4.1-mini`) for TruthfulQA scoring to reduce evaluator variance. Use OpenAI moderation endpoint for toxicity/safety scoring. Keep temperature fixed to reduce stochastic variance and improve comparability.
+
+### Experimental Steps
+1. Load pre-downloaded datasets from `datasets/` and sample fixed subsets with a reproducible seed.
+2. Define three prompt conditions with explicit templates.
+3. Run generation API calls with retry logic and JSONL logging.
+4. Score outputs:
+   - TruthfulQA with LLM judge rubric.
+   - GSM8K by numeric extraction and exact match.
+   - RealToxicityPrompts with moderation API.
+5. Compute summary statistics and pairwise tests.
+6. Perform qualitative/error analysis on representative cases.
+
+### Baselines
+- `direct`: Standard concise answer/continuation prompt.
+- `pause_control`: Require fixed non-reasoning pause tokens between sentences (token-budget control).
+- `think_between_sentences`: Require explicit `[THINK]...[/THINK]` block between every sentence.
+
+### Evaluation Metrics
+- TruthfulQA:
+  - `truthfulness_score` (0/1 by rubric).
+  - `carefulness_score` (1-5 judge rubric).
+- GSM8K:
+  - Exact-match accuracy on numeric answer.
+- RealToxicityPrompts:
+  - Moderation `flagged_rate`.
+  - Mean max category score and category-wise means.
+- Qualitative text features:
+  - Words/tokens, sentence count, hedge marker rate, self-correction marker rate.
+
+### Statistical Analysis Plan
+- Primary pairwise comparisons: `think_between_sentences` vs `direct`; `think_between_sentences` vs `pause_control`.
+- Binary outcomes: McNemar test for paired outputs where applicable; bootstrap CI for mean difference.
+- Continuous outcomes: Paired t-test if normality is plausible, else Wilcoxon signed-rank.
+- Effect sizes: Cohen&#39;s d (paired) and Cliff&#39;s delta for robustness.
+- Alpha: 0.05 with Holm correction for multiple pairwise tests.
+
+## Expected Outcomes
+- Support for hypothesis if `think_between_sentences` improves truthfulness and/or safety without hurting GSM8K, and shows clear qualitative differences relative to both controls.
+- Refutation if effects are absent, negative, or fully matched by pause-token control.
+
+## Timeline and Milestones
+1. Planning complete (this document).
+2. Environment + dependency verification and GPU check.
+3. Implement experiment harness (`src/run_experiments.py`).
+4. Run all three task experiments on fixed subsets.
+5. Analyze and visualize (`src/analyze_results.py`).
+6. Write `REPORT.md` and update `README.md`.
+7. Validation rerun on a smaller reproducibility subset.
+
+## Potential Challenges
+- API rate limits/costs: mitigate with retries, caching, subset sizes.
+- Judge model bias: mitigate with explicit rubric and transparent limitations.
+- Prompt-format noncompliance: use regex checks and fallback parsing.
+- Length confound: address with pause-token control and length-normalized analysis.
+
+## Success Criteria
+- All three experiments complete with reproducible code and saved raw outputs.
+- Report includes statistical tests, confidence intervals, effect sizes, and qualitative examples.
+- Clear conclusion on whether inter-sentence thinking tokens produce distinctive, useful changes beyond extra tokens.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          LITERATURE REVIEW
+════════════════════════════════════════════════════════════════════════════════
+
+# Literature Review: An LLM That&#39;s Careful With Its Words
+
+## Review Scope
+
+### Research Question
+Does forcing explicit intermediate reasoning/thinking tokens between generated sentences change output quality and behavior (carefulness, truthfulness, reasoning fidelity, and safety)?
+
+### Inclusion Criteria
+- Studies on chain-of-thought, deliberate generation, inner monologue, or process supervision in LLMs
+- Empirical results on text quality, reasoning, or safety-style outcomes
+- Prefer papers with public PDF and reproducible setup details
+
+### Exclusion Criteria
+- Unrelated multimodal-only methods without textual reasoning relevance
+- Papers with no methodological details or no usable evaluation setup
+
+### Time Frame
+- Primarily 2022 to 2025 (plus latest available records encountered during search)
+
+### Sources
+- arXiv API search (primary)
+- Semantic Scholar API search (supplementary)
+- Papers with Code search pages (supplementary)
+
+## Search Log
+
+| Date | Query | Source | Results | Notes |
+|------|-------|--------|---------|-------|
+| 2026-03-01 | &#34;LLM explicit chain-of-thought between every sentence careful wording&#34; | local paper-finder script | unavailable | localhost service hung; switched to manual search |
+| 2026-03-01 | chain-of-thought / deliberate / process supervision / think-before-speaking queries | arXiv API | 65 candidates | selected 10 directly relevant papers |
+| 2026-03-01 | chain of thought prompting language models | Semantic Scholar API | 5 returned | includes foundational CoT and Self-Consistency |
+| 2026-03-01 | chain of thought, tree of thoughts, truthfulqa | Papers with Code | pages reachable | used for benchmark/code linkage |
+
+## Screening Results
+
+| Paper | Title Screen | Abstract Screen | Full-Text | Notes |
+|-------|-------------|-----------------|-----------|-------|
+| 2201.11903 | Include | Include | Include (deep) | Foundational CoT prompting |
+| 2205.11916 | Include | Include | Include | Zero-shot CoT baseline |
+| 2203.11171 | Include | Include | Include | Decoding strategy for CoT robustness |
+| 2305.10601 | Include | Include | Include | Deliberate search over thoughts |
+| 2305.17306 | Include | Include | Include | Evaluation benchmark hub |
+| 2305.19835 | Include | Include | Include (deep) | Deliberate-then-generate framework |
+| 2311.07445 | Include | Include | Include (deep) | Inner monologue before response |
+| 2403.09629 | Include | Include | Include (deep) | Learned latent thought tokens before speaking |
+| 2406.06592 | Include | Include | Include | Automated process supervision |
+| 2502.10581 | Include | Include | Include | Analysis of step-by-step supervision assumptions |
+
+## Key Papers
+
+### Paper 1: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
+- Authors: Wei et al.
+- Year: 2022
+- Source: arXiv (2201.11903)
+- Key Contribution: Demonstrates large gains on multi-step reasoning from CoT exemplars.
+- Methodology: Few-shot CoT prompts with intermediate reasoning traces.
+- Datasets Used: GSM8K, StrategyQA, commonsense/math benchmarks.
+- Results: Strong accuracy gains at larger model scales.
+- Code Available: Partial benchmark assets; many downstream re-implementations.
+- Relevance: Direct baseline for any explicit between-sentence thought requirement.
+
+### Paper 2: Large Language Models are Zero-Shot Reasoners
+- Authors: Kojima et al.
+- Year: 2022
+- Source: arXiv (2205.11916)
+- Key Contribution: &#34;Let&#39;s think step by step&#34; unlocks zero-shot reasoning improvements.
+- Methodology: Zero-shot prompting trigger for latent reasoning chain.
+- Datasets Used: Arithmetic and symbolic reasoning tasks.
+- Results: Significant jump over vanilla zero-shot prompting.
+- Code Available: Community implementations exist.
+- Relevance: Minimal intervention baseline for prompting explicit reasoning text.
+
+### Paper 3: Self-Consistency Improves Chain of Thought Reasoning in Language Models
+- Authors: Wang et al.
+- Year: 2022
+- Source: arXiv (2203.11171)
+- Key Contribution: Improves CoT reliability via diverse reasoning samples + answer aggregation.
+- Methodology: Multi-sample CoT decoding with consistency voting.
+- Datasets Used: GSM8K and other reasoning benchmarks.
+- Results: Better robustness than single-path CoT.
+- Code Available: Widely reproduced.
+- Relevance: Strong comparison point for &#34;careful wording&#34; through inference-time compute.
+
+### Paper 4: Tree of Thoughts: Deliberate Problem Solving with Large Language Models
+- Authors: Yao et al.
+- Year: 2023
+- Source: arXiv (2305.10601)
+- Key Contribution: Search-based reasoning over thought units instead of single left-to-right chain.
+- Methodology: Generate/evaluate/select thoughts (BFS/DFS style).
+- Datasets Used: Game of 24, creative writing, crosswords.
+- Results: Improves success on tasks requiring planning.
+- Code Available: Yes (official repo cloned).
+- Relevance: Closely aligned with enforced intermediate thought constraints.
+
+### Paper 5: Chain-of-Thought Hub
+- Authors: Fu et al.
+- Year: 2023
+- Source: arXiv (2305.17306)
+- Key Contribution: Aggregated reasoning benchmark hub and model comparison.
+- Methodology: Evaluation suite across GSM8K/MATH/MMLU/BBH.
+- Datasets Used: Major reasoning benchmarks.
+- Results: Highlights persistent gap between frontier and smaller/open models.
+- Code Available: Yes (repo cloned).
+- Relevance: Provides practical benchmark set for this project.
+
+### Paper 6: Deliberate then Generate
+- Authors: Li et al.
+- Year: 2023
+- Source: arXiv (2305.19835)
+- Key Contribution: Separate deliberate planning from final generation for text tasks.
+- Methodology: Two-stage prompting framework.
+- Datasets Used: MT, summarization, style transfer tasks.
+- Results: Better coherence/faithfulness in several settings.
+- Code Available: No official unified release identified in this pass.
+- Relevance: Very close to &#34;think before each sentence&#34; framing.
+
+### Paper 7: Think Before You Speak
+- Authors: Zhou et al.
+- Year: 2023
+- Source: arXiv (2311.07445)
+- Key Contribution: Uses inner monologue to improve communication behavior.
+- Methodology: Prompted inner-monologue scaffolding for dialogue skills.
+- Datasets Used: Conversation skill benchmarks/self-chat and human-bot evaluations.
+- Results: Improvements in humanness/proactivity/engagingness-style metrics.
+- Code Available: Prompt design details in appendices.
+- Relevance: Directly targets &#34;consider before speaking&#34; behavior.
+
+### Paper 8: Quiet-STaR
+- Authors: Zelikman et al.
+- Year: 2024
+- Source: arXiv (2403.09629)
+- Key Contribution: Trains model to generate internal thought tokens that improve next-token prediction.
+- Methodology: Learned thought spans with specialized thought start/end tokens.
+- Datasets Used: OpenWebMath and text modeling setups.
+- Results: Better reasoning-like performance and improved predictive behavior.
+- Code Available: Public paper; check upstream project releases for code updates.
+- Relevance: Strong methodological analog to explicit intermediate thinking tokens.
+
+### Paper 9: Improve Mathematical Reasoning in Language Models by Automated Process Supervision
+- Authors: (arXiv 2406.06592)
+- Year: 2024
+- Source: arXiv
+- Key Contribution: Automated process-level supervision for intermediate reasoning quality.
+- Methodology: Process labeling/reward and reasoning optimization.
+- Datasets Used: Math reasoning datasets.
+- Results: Better step quality and final answers.
+- Code Available: Partial artifacts.
+- Relevance: Useful for judging whether explicit steps are actually useful or merely verbose.
+
+### Paper 10: Do We Need to Verify Step by Step? Rethinking Process Supervision
+- Authors: (arXiv 2502.10581)
+- Year: 2025
+- Source: arXiv
+- Key Contribution: Re-examines assumptions behind mandatory step-level verification.
+- Methodology: Theoretical and empirical analysis of process supervision regimes.
+- Datasets Used: Math/reasoning settings.
+- Results: Shows contexts where full stepwise verification is unnecessary or suboptimal.
+- Code Available: Not confirmed in this pass.
+- Relevance: Important counterpoint to the hypothesis.
+
+## Deep Reading Notes (Chunked PDFs)
+- Full chunk-by-chunk notes were recorded for four key papers:
+  - `papers/pages/2201.11903/*`
+  - `papers/pages/2305.19835/*`
+  - `papers/pages/2311.07445/*`
+  - `papers/pages/2403.09629/*`
+- Consolidated notes file: `papers/deep_reading_chunk_notes.md`
+
+## Common Methodologies
+- Prompted explicit reasoning traces: used in CoT / Zero-shot CoT / Think-before-you-speak.
+- Deliberate search/planning: used in Tree-of-Thought and deliberate-then-generate paradigms.
+- Process supervision: used for improving intermediate reasoning correctness.
+- Decoding-time robustness: self-consistency and voting over multiple rationale paths.
+
+## Standard Baselines
+- Direct answer prompting (no CoT)
+- Few-shot CoT prompting
+- Zero-shot CoT trigger prompting
+- Self-consistency decoding
+- Deliberate reasoning frameworks (ToT)
+
+## Evaluation Metrics
+- Task accuracy (GSM8K exact match / benchmark accuracy)
+- Truthfulness metrics (TruthfulQA scoring protocol)
+- Toxicity/safety behavior rates (RealToxicityPrompts continuation metrics)
+- Qualitative communication quality (human evaluation dimensions where applicable)
+
+## Datasets in the Literature
+- GSM8K: widely used for multi-step reasoning accuracy.
+- MATH/MMLU/BBH: common in reasoning benchmark hubs.
+- TruthfulQA: useful for factual robustness/carefulness checks.
+- RealToxicityPrompts: useful for safety and wording caution behaviors.
+
+## Gaps and Opportunities
+- Gap 1: Limited direct studies on forcing thought tokens between *every sentence* in open-ended generation.
+- Gap 2: Many works optimize final accuracy, not wording-level caution/fidelity tradeoffs.
+- Gap 3: Process transparency may conflict with faithfulness (reasoning text can be post-hoc).
+
+## Recommendations for Our Experiment
+- Recommended datasets:
+  - TruthfulQA (carefulness/truthfulness)
+  - GSM8K (reasoning correctness)
+  - RealToxicityPrompts (safe wording under continuation)
+- Recommended baselines:
+  - Direct generation
+  - Zero-shot CoT
+  - Few-shot CoT
+  - Self-consistency
+  - Tree-of-Thought (where task-compatible)
+- Recommended metrics:
+  - Exact match/accuracy on reasoning tasks
+  - Truthfulness score / false claim rate
+  - Toxicity rate and refusal/hedging behavior analysis
+  - Length-normalized quality measures to control verbosity inflation
+- Methodological considerations:
+  - Control for output length and token budget (forced thoughts may improve by spending more tokens).
+  - Separate private-thought vs exposed-thought conditions.
+  - Evaluate sentence-level factual precision, not only final-task correctness.
+
+
+════════════════════════════════════════════════════════════════════════════════
+                          PAPER REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+Generate a complete academic paper with the following structure:
+
+1. TITLE
+   - Clear, specific, informative
+   - Should convey main finding or contribution
+
+2. AUTHOR
+   - Use this exact author line in the \author{} block: Ari Holtzman and Idea-Explorer
+
+3. ABSTRACT (150-250 words)
+   - Problem statement
+   - Approach
+   - Key results
+   - Significance
+
+4. INTRODUCTION
+   - Research problem and motivation
+   - Gap in existing work
+   - Our contribution (be specific)
+   - Paper organization
+
+5. RELATED WORK
+   - Organized by theme/approach
+   - Position our work relative to prior work
+   - Cite papers from literature review
+
+6. METHODOLOGY
+   - Clear description of approach
+   - Experimental setup
+   - Datasets used
+   - Evaluation metrics
+   - Baselines
+
+7. RESULTS
+   - Present results with tables and figures
+   - Statistical analysis
+   - Comparison to baselines
+   - Ablation studies (if applicable)
+
+8. DISCUSSION
+   - Interpretation of results
+   - Limitations
+   - Broader implications
+
+9. CONCLUSION
+   - Summary of contributions
+   - Key findings
+   - Future work
+
+10. REFERENCES
+   - BibTeX format
+   - All cited papers
+
+════════════════════════════════════════════════════════════════════════════════
+                          OUTPUT FORMAT
+════════════════════════════════════════════════════════════════════════════════
+
+Create a MODULAR LaTeX project with the following directory structure:
+
+paper_draft/
+├── main.tex              # Main file that imports all sections
+├── references.bib        # BibTeX references
+├── sections/
+│   ├── abstract.tex      # Abstract content
+│   ├── introduction.tex  # Introduction section
+│   ├── related_work.tex  # Related work section
+│   ├── methodology.tex   # Methodology section
+│   ├── results.tex       # Results section
+│   ├── discussion.tex    # Discussion section
+│   └── conclusion.tex    # Conclusion section
+├── figures/              # Directory for any generated figures
+├── tables/               # Directory for complex standalone tables
+└── appendix/             # Directory for appendix sections (if needed)
+
+INSTRUCTIONS:
+1. First, create the directory structure above (mkdir -p paper_draft/sections paper_draft/figures paper_draft/tables paper_draft/appendix)
+2. Write main.tex using the EXACT preamble for NEURIPS:
+
+   \documentclass{article}
+   \usepackage[final]{neurips_2025}  % NEURIPS style (neurips_2025.sty is in paper_draft/)
+   \usepackage[hidelinks]{hyperref}  % REQUIRED: clickable links
+   \usepackage{booktabs}  % REQUIRED: professional tables
+   \usepackage{graphicx}
+   \usepackage{amsmath,amssymb}
+
+   % Import command files
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+   % Use this bibliography style:
+   \bibliographystyle{plainnat}
+
+   \author{Ari Holtzman and Idea-Explorer}
+
+   - Use \input{sections/...} to include each section
+   - Use \bibliography{references} for references
+3. Write each section file with COMPLETE content (no placeholders)
+4. Each section file should include its \section{} command
+5. Write references.bib with all citations in BibTeX format
+6. After writing all files, compile the paper:
+   cd paper_draft && pdflatex -interaction=nonstopmode main.tex && bibtex main && pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex
+
+This modular structure allows humans to easily:
+- Edit individual sections without navigating a large file
+- Track changes per section
+- Reuse sections across different paper versions
+
+════════════════════════════════════════════════════════════════════════════════
+                          QUALITY REQUIREMENTS
+════════════════════════════════════════════════════════════════════════════════
+
+- Academic tone throughout
+- All claims must be supported by data from the experiment report
+- Proper citations using \cite{} commands
+- Clear figures and tables with proper captions
+- NO placeholder text - every section must have real content
+- The paper MUST compile without errors
+- If compilation fails, debug and fix the LaTeX errors
+
+════════════════════════════════════════════════════════════════════════════════
+                          LAB WRITING STYLE
+════════════════════════════════════════════════════════════════════════════════
+
+Follow these lab-specific conventions to match our paper style:
+
+1. LANGUAGE STYLE:
+   - Use active voice: "We propose", "We examine", "We focus on"
+   - Be direct and confident: "Our main question is...", "We hypothesize that..."
+   - State things clearly and simply - prefer plain language over jargon
+   - Use bold questions as paragraph organizers: {\bf what is X?}
+   - Include specific quantitative claims: "8.97% over baseline"
+   - Avoid fancy wording: "utilize" → "use", "facilitate" → "help"
+
+2. INTRODUCTION STRUCTURE:
+   - Engaging hook (get to the point quickly)
+   - Problem importance
+   - Gap identification
+   - Your approach with method figure reference
+   - Quantitative preview of results
+   - Contribution bullets (3-4 items, action verbs)
+
+3. CONTRIBUTION LISTS:
+   \begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+       \item We propose...
+       \item We conduct...
+       \item We complement...
+   \end{itemize}
+
+4. MODULAR COMMANDS STRUCTURE:
+   Command templates are pre-copied to paper_draft/commands/:
+   - math.tex: Math notation macros
+   - general.tex: Formatting macros
+   - macros.tex: Project-specific term definitions (customize this for your paper)
+
+   In main.tex, include:
+   \input{commands/math}
+   \input{commands/general}
+   \input{commands/macros}
+
+5. REFERENCE CONVENTIONS:
+   Use reference macros from math.tex:
+   - \figref{fig:name} for "figure 1" (lowercase, in-sentence)
+   - \Figref{fig:name} for "Figure 1" (capitalized, start of sentence)
+   - \secref{sec:name} for "section 2"
+
+6. TEXT FORMATTING:
+   - Use \para{Header text} for bold paragraph headers
+   - Define method/dataset names with \textsc and \xspace:
+     \newcommand{\methodname}{\textsc{MethodName}\xspace}
+
+7. TABLE FORMATTING:
+   - Use booktabs package (no vertical lines)
+   - Use \resizebox{\textwidth}{!}{...} for wide tables
+   - Use @{} to remove padding at table edges
+   - Use \cmidrule(lr){x-y} for sub-headers
+   - Use \textsc{} for dataset/method names in headers
+   - Bold best results with {\bf ...}
+
+8. FIGURE FORMATTING:
+   - Use 0.32\textwidth for 3-column subfigures
+   - Use 0.95\linewidth for full-width figures
+   - Use \input{figures/legend} for shared legends
+   - Write self-contained captions explaining key observations
+
+9. RESULTS PRESENTATION:
+   - Define \increase and \decrease for colored arrows (green up, red down)
+   - Bold best results in tables
+   - Report confidence intervals when available
+
+10. ALGORITHM STYLING:
+    - Use algpseudocode with [noend]
+    - Use \triangleright for comments
+
+11. HYPERLINKS (REQUIRED):
+    - Always use \usepackage[hidelinks]{hyperref} or with colored links
+    - All citations, section refs, figure refs, table refs must be clickable
+    - This is essential for reader navigation
+
+════════════════════════════════════════════════════════════════════════════════
+                          WORKFLOW: REVIEW AND REFLECT
+════════════════════════════════════════════════════════════════════════════════
+
+Before calling finish, you MUST complete these review steps:
+
+1. REVIEW RESOURCES (at the start):
+   - Read .codex/skills/paper-writer/SKILL.md for detailed guidance
+   - Study templates/paper_writing/lab_style_guide.md for style conventions
+   - Browse paper_examples/ for formatting and language patterns
+
+2. SELF-REFLECTION (before finishing):
+   After writing all sections, review your work against these criteria:
+
+   LANGUAGE CHECK:
+   - [ ] Is the writing clear and jargon-free?
+   - [ ] Are claims specific with quantitative support?
+   - [ ] Is active voice used throughout?
+
+   FORMATTING CHECK:
+   - [ ] Does main.tex include \input{commands/math}, \input{commands/general}, \input{commands/macros}?
+   - [ ] Is hyperref package included for clickable references?
+   - [ ] Do tables use booktabs (no vertical lines)?
+   - [ ] Are best results bolded in tables?
+   - [ ] Are figures/tables properly captioned?
+
+   STRUCTURE CHECK:
+   - [ ] Does introduction follow: hook → importance → gap → approach → preview → contributions?
+   - [ ] Are contribution bullets specific with action verbs?
+   - [ ] Does the paper compile without errors?
+
+3. FIX ISSUES:
+   - Address any issues found in the self-reflection
+   - Re-compile and verify the PDF looks correct
+
+Only after completing this review should you consider the paper finished.

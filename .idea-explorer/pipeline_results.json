@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/workspaces/careful-llm-words-4e0d-codex/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/workspaces/careful-llm-words-4e0d-codex/literature_review.md",
+        "resources_catalog": "/workspaces/careful-llm-words-4e0d-codex/resources.md",
+        "papers_dir": "/workspaces/careful-llm-words-4e0d-codex/papers",
+        "datasets_dir": "/workspaces/careful-llm-words-4e0d-codex/datasets",
+        "code_dir": "/workspaces/careful-llm-words-4e0d-codex/code"
+      },
+      "log_file": "/workspaces/careful-llm-words-4e0d-codex/logs/resource_finder_codex.log",
+      "transcript_file": "/workspaces/careful-llm-words-4e0d-codex/logs/resource_finder_codex_transcript.jsonl",
+      "elapsed_time": 417.91229581832886
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 1269.2786700725555,
+      "log_file": "/workspaces/careful-llm-words-4e0d-codex/logs/execution_codex.log",
+      "transcript_file": "/workspaces/careful-llm-words-4e0d-codex/logs/execution_codex_transcript.jsonl"
+    }
+  },
+  "work_dir": "/workspaces/careful-llm-words-4e0d-codex"
+}

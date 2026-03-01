@@ -1,0 +1,19 @@
+\section{Methodology}
+\label{sec:method}
+\para{{\bf study design.}} We run an inference-only, within-item comparison across three prompting conditions:
+\begin{itemize}
+    \item \direct: answer directly with no inserted tags.
+    \item \pausecontrol: force non-reasoning \texttt{[PAUSE]} blocks between sentences.
+    \item \thinkbetween: force explicit \texttt{[THINK]}...\texttt{[/THINK]} blocks between sentences.
+\end{itemize}
+The pause condition controls for the cost of inserting extra tokens without deliberate content.
+
+\para{{\bf datasets and sampling.}} We use local Hugging Face copies of \truthfulqa (generation split), \gsm (main split), and \rtp. We sample 50 items per dataset with seed 42, yielding 150 prompts and 450 generations across conditions. Data-quality checks report zero missing key fields in all datasets and no duplicate prompts in \truthfulqa/\gsm (47 duplicates in the 20k \rtp subset metadata).
+
+\para{{\bf models and implementation.}} Generation uses \genmodel at temperature 0.2 and max output length 320. \truthfulqa scoring uses \judgemodel with a fixed rubric producing binary truthfulness and 1--5 carefulness. \rtp safety scoring uses \modmodel (flagged rate and maximum category score). The run uses Python 3.12.8 and standard analysis libraries (NumPy, pandas, SciPy, statsmodels).
+
+\para{{\bf metrics.}} For \truthfulqa, we report truthful rate and mean carefulness score. For \gsm, we report exact-match accuracy after numeric normalization. For \rtp, we report moderation flagged rate and mean maximum category score.
+
+\para{{\bf statistical testing.}} We use paired comparisons because all conditions are evaluated on the same items. Continuous paired outcomes use Wilcoxon signed-rank tests (with bootstrap confidence intervals for mean differences). Binary paired outcomes use McNemar tests. We apply Holm correction within each test family at $\alpha=0.05$.
+
+\para{{\bf reproducibility and compliance checks.}} All runs use seed 42. Prompt-format compliance is 50/50 for the required tag counts in both \thinkbetween and \pausecontrol conditions, and 0/50 leakage in \direct for each task. Wall-clock runtime is about 13.84 minutes.

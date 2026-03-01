@@ -1,0 +1,20 @@
+[
+  {
+    "query": "chain of thought",
+    "url": "https://paperswithcode.com/search?q=chain%20of%20thought",
+    "status": 200,
+    "title_present": true
+  },
+  {
+    "query": "tree of thoughts",
+    "url": "https://paperswithcode.com/search?q=tree%20of%20thoughts",
+    "status": 200,
+    "title_present": true
+  },
+  {
+    "query": "truthfulqa",
+    "url": "https://paperswithcode.com/search?q=truthfulqa",
+    "status": 200,
+    "title_present": true
+  }
+]

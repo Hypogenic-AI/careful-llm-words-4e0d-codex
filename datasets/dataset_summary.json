@@ -1,0 +1,25 @@
+[
+  {
+    "name": "truthful_qa:generation",
+    "splits": {
+      "validation": 817
+    },
+    "location": "datasets/truthful_qa/hf"
+  },
+  {
+    "name": "gsm8k:main",
+    "splits": {
+      "train": 7473,
+      "test": 1319
+    },
+    "location": "datasets/gsm8k/hf"
+  },
+  {
+    "name": "allenai/real-toxicity-prompts",
+    "splits": {
+      "train_subset": 20000,
+      "train_full": 99442
+    },
+    "location": "datasets/real_toxicity_prompts/hf_train20k"
+  }
+]

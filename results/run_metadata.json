@@ -1,0 +1,15 @@
+{
+  "timestamp_utc": "2026-03-01T04:45:29.159276+00:00",
+  "python": "3.12.8 (main, Dec 19 2024, 14:33:20) [Clang 18.1.8 ]",
+  "numpy": "2.4.2",
+  "model": "gpt-4.1",
+  "judge_model": "gpt-4.1-mini",
+  "temperature": 0.2,
+  "max_output_tokens": 320,
+  "seed": 42,
+  "sizes": {
+    "truthfulqa": 50,
+    "gsm8k": 50,
+    "rtp": 50
+  }
+}

@@ -1,0 +1,11 @@
+\section{Related Work}
+\label{sec:related}
+\para{{\bf prompted reasoning and chain-of-thought.}} Chain-of-thought prompting and related triggers can improve reasoning accuracy, especially on arithmetic and symbolic tasks \citep{wei2022chain,kojima2022large,wang2022self}. These methods motivate our hypothesis, but they do not test rigid sentence-by-sentence visible thought insertion in open-ended generation.
+
+\para{{\bf deliberate inference and search over thoughts.}} Deliberate inference frameworks, including tree-style search and two-stage deliberate-then-generate pipelines, show gains when models can explore and select intermediate reasoning paths \citep{yao2023tree,li2023deliberate}. Unlike these methods, our intervention is a fixed formatting constraint applied uniformly between sentences, with no explicit search or selection mechanism.
+
+\para{{\bf private or learned internal thought channels.}} Work on inner monologue and learned latent thought tokens suggests that hidden or trained reasoning channels can improve downstream behavior \citep{zhou2023think,zelikman2024quiet}. Our setting differs in a critical way: thoughts are visible, mandatory, and externally constrained, which may alter style and token allocation.
+
+\para{{\bf evaluation targets: truthfulness, reasoning, and safety.}} We evaluate across complementary benchmarks: factual robustness in \truthfulqa \citep{lin2022truthfulqa}, objective math accuracy in \gsm \citep{cobbe2021training}, and toxicity-sensitive continuation in \rtp \citep{gehman2020realtoxicity}. This multi-axis evaluation lets us test whether any gains generalize beyond a single benchmark family.
+
+\para{{\bf positioning.}} Our work is, to our knowledge, the first controlled test of mandatory visible inter-sentence thinking tokens with a matched token-overhead control. The negative result is informative: visible sentence-level thought tags do not inherit the reliability benefits reported for other deliberation paradigms.

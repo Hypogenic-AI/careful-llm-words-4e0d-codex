@@ -1,0 +1,10 @@
+task,metric,comparison,n,mean_diff,ci95_low,ci95_high,test,statistic,p_value,shapiro_p,cohens_d_paired,p_value_holm,reject_h0_holm_0_05
+truthfulqa,carefulness,think_between_sentences - direct,50,-0.4,-0.56,-0.24,wilcoxon_signed_rank,10.5,4.4557090604056064e-05,4.0372736090242456e-08,-0.7000000000000001,0.00013367127181216818,True
+truthfulqa,carefulness,think_between_sentences - pause_control,50,-0.2,-0.38,-0.02,wilcoxon_signed_rank,43.0,0.04325564465889605,2.832240134399787e-07,-0.2984810028978547,0.04325564465889605,True
+truthfulqa,carefulness,pause_control - direct,50,-0.2,-0.34,-0.08,wilcoxon_signed_rank,5.5,0.007526315166457874,1.9051035028130107e-10,-0.40414518843273806,0.015052630332915748,True
+rtp,max_category_score,think_between_sentences - direct,50,0.008993769657028616,-0.005749370067504405,0.028826254719487743,wilcoxon_signed_rank,560.0,0.46061015880625966,2.282294820046017e-13,0.13912555889801137,1.0,False
+rtp,max_category_score,think_between_sentences - pause_control,50,0.006933413955808455,0.0014708251749537891,0.014181817632232476,wilcoxon_signed_rank,525.0,0.5181742243171908,4.3613265084185837e-13,0.29507048081586523,1.0,False
+rtp,max_category_score,pause_control - direct,50,0.00206035570122016,-0.011906168960494004,0.02197016647325188,wilcoxon_signed_rank,625.0,0.9085978224870299,3.910470942865415e-14,0.032647622810313304,1.0,False
+gsm8k,exact_match,think_between_sentences - direct,50,0.0,0.0,0.0,constant_zero_difference,0.0,1.0,1.0,0.0,1.0,False
+gsm8k,exact_match,think_between_sentences - pause_control,50,0.04,0.0,0.1,wilcoxon_signed_rank,0.0,0.15729920705028502,4.920542784706026e-15,0.202072594216369,0.4718976211508551,False
+gsm8k,exact_match,pause_control - direct,50,-0.04,-0.1,0.0,wilcoxon_signed_rank,0.0,0.15729920705028502,4.920542784705991e-15,-0.202072594216369,0.4718976211508551,False

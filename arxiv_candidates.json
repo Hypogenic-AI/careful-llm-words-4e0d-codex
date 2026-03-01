@@ -1,0 +1,587 @@
+[
+  {
+    "id": "2410.03595",
+    "title": "Understanding Reasoning in Chain-of-Thought from the Hopfieldian View",
+    "year": 2024,
+    "authors": "Lijie Hu, Liang Liu, Shu Yang, Xin Chen, Zhen Tan, Muhammad Asif Ali, Mengdi Li, Di Wang",
+    "pdf_url": "https://arxiv.org/pdf/2410.03595v1",
+    "entry_id": "http://arxiv.org/abs/2410.03595v1",
+    "summary": "Large Language Models have demonstrated remarkable abilities across various tasks, with Chain-of-Thought (CoT) prompting emerging as a key technique to enhance reasoning capabilities. However, existing research primarily focuses on improving performance, lacking a comprehensive framework to explain and understand the fundamental factors behind CoT's success. To bridge this gap, we introduce a novel perspective grounded in the Hopfieldian view of cognition in cognitive neuroscience. We establish "
+  },
+  {
+    "id": "2305.17306",
+    "title": "Chain-of-Thought Hub: A Continuous Effort to Measure Large Language Models' Reasoning Performance",
+    "year": 2023,
+    "authors": "Yao Fu, Litu Ou, Mingyu Chen, Yuhao Wan, Hao Peng, Tushar Khot",
+    "pdf_url": "https://arxiv.org/pdf/2305.17306v1",
+    "entry_id": "http://arxiv.org/abs/2305.17306v1",
+    "summary": "As large language models (LLMs) are continuously being developed, their evaluation becomes increasingly important yet challenging. This work proposes Chain-of-Thought Hub, an open-source evaluation suite on the multi-step reasoning capabilities of large language models. We are interested in this setting for two reasons: (1) from the behavior of GPT and PaLM model family, we observe that complex reasoning is likely to be a key differentiator between weaker and stronger LLMs; (2) we envisage large"
+  },
+  {
+    "id": "2601.03559",
+    "title": "DiffCoT: Diffusion-styled Chain-of-Thought Reasoning in LLMs",
+    "year": 2026,
+    "authors": "Shidong Cao, Hongzhan Lin, Yuxuan Gu, Ziyang Luo, Jing Ma",
+    "pdf_url": "https://arxiv.org/pdf/2601.03559v1",
+    "entry_id": "http://arxiv.org/abs/2601.03559v1",
+    "summary": "Chain-of-Thought (CoT) reasoning improves multi-step mathematical problem solving in large language models but remains vulnerable to exposure bias and error accumulation, as early mistakes propagate irreversibly through autoregressive decoding. In this work, we propose DiffCoT, a diffusion-styled CoT framework that reformulates CoT reasoning as an iterative denoising process. DiffCoT integrates diffusion principles at the reasoning-step level via a sliding-window mechanism, enabling unified gene"
+  },
+  {
+    "id": "2503.09567",
+    "title": "Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models",
+    "year": 2025,
+    "authors": "Qiguang Chen, Libo Qin, Jinhao Liu, Dengyun Peng, Jiannan Guan, Peng Wang, Mengkang Hu, Yuhang Zhou",
+    "pdf_url": "https://arxiv.org/pdf/2503.09567v5",
+    "entry_id": "http://arxiv.org/abs/2503.09567v5",
+    "summary": "Recent advancements in reasoning with large language models (RLLMs), such as OpenAI-O1 and DeepSeek-R1, have demonstrated their impressive capabilities in complex domains like mathematics and coding. A central factor in their success lies in the application of long chain-of-thought (Long CoT) characteristics, which enhance reasoning abilities and enable the solution of intricate problems. However, despite these developments, a comprehensive survey on Long CoT is still lacking, limiting our under"
+  },
+  {
+    "id": "2311.09277",
+    "title": "Contrastive Chain-of-Thought Prompting",
+    "year": 2023,
+    "authors": "Yew Ken Chia, Guizhen Chen, Luu Anh Tuan, Soujanya Poria, Lidong Bing",
+    "pdf_url": "https://arxiv.org/pdf/2311.09277v1",
+    "entry_id": "http://arxiv.org/abs/2311.09277v1",
+    "summary": "Despite the success of chain of thought in enhancing language model reasoning, the underlying process remains less well understood. Although logically sound reasoning appears inherently crucial for chain of thought, prior studies surprisingly reveal minimal impact when using invalid demonstrations instead. Furthermore, the conventional chain of thought does not inform language models on what mistakes to avoid, which potentially leads to more errors. Hence, inspired by how humans can learn from b"
+  },
+  {
+    "id": "2201.11903",
+    "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+    "year": 2022,
+    "authors": "Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le",
+    "pdf_url": "https://arxiv.org/pdf/2201.11903v6",
+    "entry_id": "http://arxiv.org/abs/2201.11903v6",
+    "summary": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought pr"
+  },
+  {
+    "id": "2311.01460",
+    "title": "Implicit Chain of Thought Reasoning via Knowledge Distillation",
+    "year": 2023,
+    "authors": "Yuntian Deng, Kiran Prasad, Roland Fernandez, Paul Smolensky, Vishrav Chaudhary, Stuart Shieber",
+    "pdf_url": "https://arxiv.org/pdf/2311.01460v1",
+    "entry_id": "http://arxiv.org/abs/2311.01460v1",
+    "summary": "To augment language models with the ability to reason, researchers usually prompt or finetune them to produce chain of thought reasoning steps before producing the final answer. However, although people use natural language to reason effectively, it may be that LMs could reason more effectively with some intermediate computation that is not in natural language. In this work, we explore an alternative reasoning approach: instead of explicitly producing the chain of thought reasoning steps, we use"
+  },
+  {
+    "id": "2410.17635",
+    "title": "Markov Chain of Thought for Efficient Mathematical Reasoning",
+    "year": 2024,
+    "authors": "Wen Yang, Minpeng Liao, Kai Fan",
+    "pdf_url": "https://arxiv.org/pdf/2410.17635v2",
+    "entry_id": "http://arxiv.org/abs/2410.17635v2",
+    "summary": "Chain of Thought (CoT) of multi-step benefits from the logical structure of the reasoning steps and task-specific actions, significantly enhancing the mathematical reasoning capabilities of large language models. As the prevalence of long CoT, the number of reasoning steps exceeds manageable token limits and leads to higher computational demands. Inspired by the fundamental logic of human cognition, \"derive, then reduce\", we conceptualize the standard multi-step CoT as a novel Markov Chain of Th"
+  },
+  {
+    "id": "2503.01544",
+    "title": "Compositional Reasoning with Transformers, RNNs, and Chain of Thought",
+    "year": 2025,
+    "authors": "Gilad Yehudai, Noah Amsel, Joan Bruna",
+    "pdf_url": "https://arxiv.org/pdf/2503.01544v2",
+    "entry_id": "http://arxiv.org/abs/2503.01544v2",
+    "summary": "It is well understood that different neural network architectures are suited to different tasks, but is there always a single best architecture for a given task? We compare the expressive power of transformers, RNNs, and transformers with chain of thought tokens on a simple and natural class of tasks we term Compositional Reasoning Questions (CRQ). This family captures multi-step problems with tree-like compositional structure, such as evaluating Boolean formulas. We prove that under standard ha"
+  },
+  {
+    "id": "2410.03810",
+    "title": "Exploring the Limitations of Mamba in COPY and CoT Reasoning",
+    "year": 2024,
+    "authors": "Ruifeng Ren, Zhicong Li, Yong Liu",
+    "pdf_url": "https://arxiv.org/pdf/2410.03810v3",
+    "entry_id": "http://arxiv.org/abs/2410.03810v3",
+    "summary": "Transformers have become the backbone of modern Large Language Models (LLMs); however, their inference overhead grows linearly with the sequence length, posing challenges for modeling long sequences. In light of this, Mamba has attracted attention for maintaining a constant inference size, with empirical evidence demonstrating that it can match Transformer performance in sequence modeling while significantly reducing computational costs. However, an open question remains: can Mamba always bring "
+  },
+  {
+    "id": "2409.04057",
+    "title": "Self-Harmonized Chain of Thought",
+    "year": 2024,
+    "authors": "Ziqi Jin, Wei Lu",
+    "pdf_url": "https://arxiv.org/pdf/2409.04057v2",
+    "entry_id": "http://arxiv.org/abs/2409.04057v2",
+    "summary": "Chain-of-thought (CoT) prompting has demonstrated the capacity of large language models to perform complex reasoning through intermediate steps. While effective, current CoT methods face challenges: Zero-shot-CoT can lead to reasoning errors, and Few-shot-CoT requires labor-intensive manual demonstrations. Auto-CoT attempts to address these issues by automatically generating diverse demonstrations, but this diversity can lead to inconsistent reasoning patterns. We propose ECHO (Self-Harmonized C"
+  },
+  {
+    "id": "2203.11171",
+    "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+    "year": 2022,
+    "authors": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou",
+    "pdf_url": "https://arxiv.org/pdf/2203.11171v4",
+    "entry_id": "http://arxiv.org/abs/2203.11171v4",
+    "summary": "Chain-of-thought prompting combined with pre-trained large language models has achieved encouraging results on complex reasoning tasks. In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Self-consistency leverages the intuitio"
+  },
+  {
+    "id": "2310.07923",
+    "title": "The Expressive Power of Transformers with Chain of Thought",
+    "year": 2023,
+    "authors": "William Merrill, Ashish Sabharwal",
+    "pdf_url": "https://arxiv.org/pdf/2310.07923v5",
+    "entry_id": "http://arxiv.org/abs/2310.07923v5",
+    "summary": "Recent theoretical work has identified surprisingly simple reasoning problems, such as checking if two nodes in a graph are connected or simulating finite-state machines, that are provably unsolvable by standard transformers that answer immediately after reading their input. However, in practice, transformers' reasoning can be improved by allowing them to use a \"chain of thought\" or \"scratchpad\", i.e., generate and condition on a sequence of intermediate tokens before answering. Motivated by thi"
+  },
+  {
+    "id": "2409.17353",
+    "title": "Internalizing ASR with Implicit Chain of Thought for Efficient Speech-to-Speech Conversational LLM",
+    "year": 2024,
+    "authors": "Robin Shing-Hei Yuen, Timothy Tin-Long Tse, Jian Zhu",
+    "pdf_url": "https://arxiv.org/pdf/2409.17353v3",
+    "entry_id": "http://arxiv.org/abs/2409.17353v3",
+    "summary": "Current speech-based LLMs are predominantly trained on extensive ASR and TTS datasets, excelling in tasks related to these domains. However, their ability to handle direct speech-to-speech conversations remains notably constrained. These models often rely on an ASR-to-TTS chain-of-thought pipeline, converting speech into text for processing before generating audio responses, which introduces latency and loses audio features. We propose a method that implicitly internalizes ASR chain of thought i"
+  },
+  {
+    "id": "2503.02003",
+    "title": "HoT: Highlighted Chain of Thought for Referencing Supporting Facts from Inputs",
+    "year": 2025,
+    "authors": "Tin Nguyen, Logan Bolton, Mohammad Reza Taesiri, Trung Bui, Anh Totti Nguyen",
+    "pdf_url": "https://arxiv.org/pdf/2503.02003v5",
+    "entry_id": "http://arxiv.org/abs/2503.02003v5",
+    "summary": "An Achilles heel of Large Language Models (LLMs) is their tendency to hallucinate non-factual statements. A response mixed of factual and non-factual statements poses a challenge for humans to verify and accurately base their decisions on. To combat this problem, we propose Highlighted Chain-of-Thought Prompting (HoT), a technique for prompting LLMs to generate responses with XML tags that ground facts to those provided in the question. That is, given an input question, LLMs would first re-forma"
+  },
+  {
+    "id": "2505.00662",
+    "title": "DeepCritic: Deliberate Critique with Large Language Models",
+    "year": 2025,
+    "authors": "Wenkai Yang, Jingwen Chen, Yankai Lin, Ji-Rong Wen",
+    "pdf_url": "https://arxiv.org/pdf/2505.00662v1",
+    "entry_id": "http://arxiv.org/abs/2505.00662v1",
+    "summary": "As Large Language Models (LLMs) are rapidly evolving, providing accurate feedback and scalable oversight on their outputs becomes an urgent and critical problem. Leveraging LLMs as critique models to achieve automated supervision is a promising solution. In this work, we focus on studying and enhancing the math critique ability of LLMs. Current LLM critics provide critiques that are too shallow and superficial on each step, leading to low judgment accuracy and struggling to offer sufficient feed"
+  },
+  {
+    "id": "2505.15210",
+    "title": "Deliberation on Priors: Trustworthy Reasoning of Large Language Models on Knowledge Graphs",
+    "year": 2025,
+    "authors": "Jie Ma, Ning Qu, Zhitao Gao, Rui Xing, Jun Liu, Hongbin Pei, Jiang Xie, Linyun Song",
+    "pdf_url": "https://arxiv.org/pdf/2505.15210v3",
+    "entry_id": "http://arxiv.org/abs/2505.15210v3",
+    "summary": "Knowledge graph-based retrieval-augmented generation seeks to mitigate hallucinations in Large Language Models (LLMs) caused by insufficient or outdated knowledge. However, existing methods often fail to fully exploit the prior knowledge embedded in knowledge graphs (KGs), particularly their structural information and explicit or implicit constraints. The former can enhance the faithfulness of LLMs' reasoning, while the latter can improve the reliability of response generation. Motivated by thes"
+  },
+  {
+    "id": "2505.14015",
+    "title": "AUTOLAW: Enhancing Legal Compliance in Large Language Models via Case Law Generation and Jury-Inspired Deliberation",
+    "year": 2025,
+    "authors": "Tai D. Nguyen, Long H. Pham, Jun Sun",
+    "pdf_url": "https://arxiv.org/pdf/2505.14015v2",
+    "entry_id": "http://arxiv.org/abs/2505.14015v2",
+    "summary": "The rapid advancement of domain-specific large language models (LLMs) in fields like law necessitates frameworks that account for nuanced regional legal distinctions, which are critical for ensuring compliance and trustworthiness. Existing legal evaluation benchmarks often lack adaptability and fail to address diverse local contexts, limiting their utility in dynamically evolving regulatory landscapes. To address these gaps, we propose AutoLaw, a novel violation detection framework that combines"
+  },
+  {
+    "id": "2309.11495",
+    "title": "Chain-of-Verification Reduces Hallucination in Large Language Models",
+    "year": 2023,
+    "authors": "Shehzaad Dhuliawala, Mojtaba Komeili, Jing Xu, Roberta Raileanu, Xian Li, Asli Celikyilmaz, Jason Weston",
+    "pdf_url": "https://arxiv.org/pdf/2309.11495v2",
+    "entry_id": "http://arxiv.org/abs/2309.11495v2",
+    "summary": "Generation of plausible yet incorrect factual information, termed hallucination, is an unsolved issue in large language models. We study the ability of language models to deliberate on the responses they give in order to correct their mistakes. We develop the Chain-of-Verification (CoVe) method whereby the model first (i) drafts an initial response; then (ii) plans verification questions to fact-check its draft; (iii) answers those questions independently so the answers are not biased by other r"
+  },
+  {
+    "id": "2305.19835",
+    "title": "Deliberate then Generate: Enhanced Prompting Framework for Text Generation",
+    "year": 2023,
+    "authors": "Bei Li, Rui Wang, Junliang Guo, Kaitao Song, Xu Tan, Hany Hassan, Arul Menezes, Tong Xiao",
+    "pdf_url": "https://arxiv.org/pdf/2305.19835v1",
+    "entry_id": "http://arxiv.org/abs/2305.19835v1",
+    "summary": "Large language models (LLMs) have shown remarkable success across a wide range of natural language generation tasks, where proper prompt designs make great impacts. While existing prompting methods are normally restricted to providing correct information, in this paper, we encourage the model to deliberate by proposing a novel Deliberate then Generate (DTG) prompting framework, which consists of error detection instructions and candidates that may contain errors. DTG is a simple yet effective te"
+  },
+  {
+    "id": "2401.06853",
+    "title": "Large Language Models Can Learn Temporal Reasoning",
+    "year": 2024,
+    "authors": "Siheng Xiong, Ali Payani, Ramana Kompella, Faramarz Fekri",
+    "pdf_url": "https://arxiv.org/pdf/2401.06853v6",
+    "entry_id": "http://arxiv.org/abs/2401.06853v6",
+    "summary": "While large language models (LLMs) have demonstrated remarkable reasoning capabilities, they are not without their flaws and inaccuracies. Recent studies have introduced various methods to mitigate these limitations. Temporal reasoning (TR), in particular, presents a significant challenge for LLMs due to its reliance on diverse temporal concepts and intricate temporal logic. In this paper, we propose TG-LLM, a novel framework towards language-based TR. Instead of reasoning over the original cont"
+  },
+  {
+    "id": "2305.10601",
+    "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+    "year": 2023,
+    "authors": "Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, Karthik Narasimhan",
+    "pdf_url": "https://arxiv.org/pdf/2305.10601v2",
+    "entry_id": "http://arxiv.org/abs/2305.10601v2",
+    "summary": "Language models are increasingly being deployed for general problem solving across a wide range of tasks, but are still confined to token-level, left-to-right decision-making processes during inference. This means they can fall short in tasks that require exploration, strategic lookahead, or where initial decisions play a pivotal role. To surmount these challenges, we introduce a new framework for language model inference, Tree of Thoughts (ToT), which generalizes over the popular Chain of Thoug"
+  },
+  {
+    "id": "2503.21544",
+    "title": "SWI: Speaking with Intent in Large Language Models",
+    "year": 2025,
+    "authors": "Yuwei Yin, EunJeong Hwang, Giuseppe Carenini",
+    "pdf_url": "https://arxiv.org/pdf/2503.21544v3",
+    "entry_id": "http://arxiv.org/abs/2503.21544v3",
+    "summary": "Intent, typically clearly formulated and planned, functions as a cognitive framework for communication and problem-solving. This paper introduces the concept of Speaking with Intent (SWI) in large language models (LLMs), where the explicitly generated intent encapsulates the model's underlying intention and provides high-level planning to guide subsequent analysis and action. By emulating deliberate and purposeful thoughts in the human mind, SWI is hypothesized to enhance the reasoning capabilit"
+  },
+  {
+    "id": "2404.07084",
+    "title": "Dynamic Generation of Personalities with Large Language Models",
+    "year": 2024,
+    "authors": "Jianzhi Liu, Hexiang Gu, Tianyu Zheng, Liuyu Xiang, Huijia Wu, Jie Fu, Zhaofeng He",
+    "pdf_url": "https://arxiv.org/pdf/2404.07084v1",
+    "entry_id": "http://arxiv.org/abs/2404.07084v1",
+    "summary": "In the realm of mimicking human deliberation, large language models (LLMs) show promising performance, thereby amplifying the importance of this research area. Deliberation is influenced by both logic and personality. However, previous studies predominantly focused on the logic of LLMs, neglecting the exploration of personality aspects. In this work, we introduce Dynamic Personality Generation (DPG), a dynamic personality generation method based on Hypernetworks. Initially, we embed the Big Five"
+  },
+  {
+    "id": "2507.06999",
+    "title": "Learning Deliberately, Acting Intuitively: Unlocking Test-Time Reasoning in Multimodal LLMs",
+    "year": 2025,
+    "authors": "Yahan Yu, Yuyang Dong, Masafumi Oyamada",
+    "pdf_url": "https://arxiv.org/pdf/2507.06999v1",
+    "entry_id": "http://arxiv.org/abs/2507.06999v1",
+    "summary": "Reasoning is a key capability for large language models (LLMs), particularly when applied to complex tasks such as mathematical problem solving. However, multimodal reasoning research still requires further exploration of modality alignment and training costs. Many of these approaches rely on additional data annotation and relevant rule-based rewards to enhance the understanding and reasoning ability, which significantly increases training costs and limits scalability. To address these challenge"
+  },
+  {
+    "id": "2506.00806",
+    "title": "Fast or Slow? Integrating Fast Intuition and Deliberate Thinking for Enhancing Visual Question Answering",
+    "year": 2025,
+    "authors": "Songtao Jiang, Chenyi Zhou, Yan Zhang, Yeying Jin, Zuozhu Liu",
+    "pdf_url": "https://arxiv.org/pdf/2506.00806v1",
+    "entry_id": "http://arxiv.org/abs/2506.00806v1",
+    "summary": "Multimodal large language models (MLLMs) still struggle with complex reasoning tasks in Visual Question Answering (VQA). While current methods have advanced by incorporating visual prompts, our study uncovers critical limitations: these approaches indiscriminately annotate all detected objects for every visual question, generating excessive visual markers that degrade task performance. This issue stems primarily from a lack of focus on key visual elements, raising two important questions: Are al"
+  },
+  {
+    "id": "2304.12203",
+    "title": "Creating Large Language Model Resistant Exams: Guidelines and Strategies",
+    "year": 2023,
+    "authors": "Simon kaare Larsen",
+    "pdf_url": "https://arxiv.org/pdf/2304.12203v1",
+    "entry_id": "http://arxiv.org/abs/2304.12203v1",
+    "summary": "The proliferation of Large Language Models (LLMs), such as ChatGPT, has raised concerns about their potential impact on academic integrity, prompting the need for LLM-resistant exam designs. This article investigates the performance of LLMs on exams and their implications for assessment, focusing on ChatGPT's abilities and limitations. We propose guidelines for creating LLM-resistant exams, including content moderation, deliberate inaccuracies, real-world scenarios beyond the model's knowledge b"
+  },
+  {
+    "id": "2408.15079",
+    "title": "BaichuanSEED: Sharing the Potential of ExtensivE Data Collection and Deduplication by Introducing a Competitive Large Language Model Baseline",
+    "year": 2024,
+    "authors": "Guosheng Dong, Da Pan, Yiding Sun, Shusen Zhang, Zheng Liang, Xin Wu, Yanjun Shen, Fan Yang",
+    "pdf_url": "https://arxiv.org/pdf/2408.15079v1",
+    "entry_id": "http://arxiv.org/abs/2408.15079v1",
+    "summary": "The general capabilities of Large Language Models (LLM) highly rely on the composition and selection on extensive pretraining datasets, treated as commercial secrets by several institutions. To mitigate this issue, we open-source the details of a universally applicable data processing pipeline and validate its effectiveness and potential by introducing a competitive LLM baseline. Specifically, the data processing pipeline consists of broad collection to scale up and reweighting to improve qualit"
+  },
+  {
+    "id": "2403.19322",
+    "title": "Plug-and-Play Grounding of Reasoning in Multimodal Large Language Models",
+    "year": 2024,
+    "authors": "Jiaxing Chen, Yuxuan Liu, Dehu Li, Xiang An, Weimo Deng, Ziyong Feng, Yongle Zhao, Yin Xie",
+    "pdf_url": "https://arxiv.org/pdf/2403.19322v2",
+    "entry_id": "http://arxiv.org/abs/2403.19322v2",
+    "summary": "The rise of Multimodal Large Language Models (MLLMs), renowned for their advanced instruction-following and reasoning capabilities, has significantly propelled the field of visual reasoning. However, due to limitations in their image tokenization processes, most MLLMs struggle to capture fine details of text and objects in images, especially in high-resolution samples. To overcome this limitation, we introduce P2G, a novel framework for plug-and-play grounding in MLLMs. P2G utilizes the tool-usa"
+  },
+  {
+    "id": "2512.02306",
+    "title": "OmniGuard: Unified Omni-Modal Guardrails with Deliberate Reasoning",
+    "year": 2025,
+    "authors": "Boyu Zhu, Xiaofei Wen, Wenjie Jacky Mo, Tinghui Zhu, Yanan Xie, Peng Qi, Muhao Chen",
+    "pdf_url": "https://arxiv.org/pdf/2512.02306v1",
+    "entry_id": "http://arxiv.org/abs/2512.02306v1",
+    "summary": "Omni-modal Large Language Models (OLLMs) that process text, images, videos, and audio introduce new challenges for safety and value guardrails in human-AI interaction. Prior guardrail research largely targets unimodal settings and typically frames safeguarding as binary classification, which limits robustness across diverse modalities and tasks. To address this gap, we propose OmniGuard, the first family of omni-modal guardrails that performs safeguarding across all modalities with deliberate re"
+  },
+  {
+    "id": "2510.00071",
+    "title": "ARS: Adaptive Reasoning Suppression for Efficient Large Reasoning Language Models",
+    "year": 2025,
+    "authors": "Dongqi Zheng",
+    "pdf_url": "https://arxiv.org/pdf/2510.00071v2",
+    "entry_id": "http://arxiv.org/abs/2510.00071v2",
+    "summary": "Large Reasoning Language Models (LRLMs or LRMs) demonstrate remarkable capabilities in complex reasoning tasks, but suffer from significant computational inefficiencies due to overthinking phenomena. Existing efficient reasoning methods face the challenge of balancing reasoning quality with inference cost reduction. We propose \\textbf{Adaptive Reasoning Suppression (ARS)}, a novel training-free approach that dynamically suppresses redundant reasoning steps while preserving accuracy through adapt"
+  },
+  {
+    "id": "2309.02144",
+    "title": "Making Large Language Models Better Reasoners with Alignment",
+    "year": 2023,
+    "authors": "Peiyi Wang, Lei Li, Liang Chen, Feifan Song, Binghuai Lin, Yunbo Cao, Tianyu Liu, Zhifang Sui",
+    "pdf_url": "https://arxiv.org/pdf/2309.02144v1",
+    "entry_id": "http://arxiv.org/abs/2309.02144v1",
+    "summary": "Reasoning is a cognitive process of using evidence to reach a sound conclusion. The reasoning capability is essential for large language models (LLMs) to serve as the brain of the artificial general intelligence agent. Recent studies reveal that fine-tuning LLMs on data with the chain of thought (COT) reasoning process can significantly enhance their reasoning capabilities. However, we find that the fine-tuned LLMs suffer from an \\textit{Assessment Misalignment} problem, i.e., they frequently as"
+  },
+  {
+    "id": "2308.16118",
+    "title": "Response: Emergent analogical reasoning in large language models",
+    "year": 2023,
+    "authors": "Damian Hodel, Jevin West",
+    "pdf_url": "https://arxiv.org/pdf/2308.16118v2",
+    "entry_id": "http://arxiv.org/abs/2308.16118v2",
+    "summary": "In their recent Nature Human Behaviour paper, \"Emergent analogical reasoning in large language models,\" (Webb, Holyoak, and Lu, 2023) the authors argue that \"large language models such as GPT-3 have acquired an emergent ability to find zero-shot solutions to a broad range of analogy problems.\" In this response, we provide counterexamples of the letter string analogies. In our tests, GPT-3 fails to solve simplest variations of the original tasks, whereas human performance remains consistently hig"
+  },
+  {
+    "id": "2512.13930",
+    "title": "Hierarchical Multi-agent Large Language Model Reasoning for Autonomous Functional Materials Discovery",
+    "year": 2025,
+    "authors": "Samuel Rothfarb, Megan C. Davis, Ivana Matanovic, Baikun Li, Edward F. Holby, Wilton J. M. Kort-Kamp",
+    "pdf_url": "https://arxiv.org/pdf/2512.13930v1",
+    "entry_id": "http://arxiv.org/abs/2512.13930v1",
+    "summary": "Artificial intelligence is reshaping scientific exploration, but most methods automate procedural tasks without engaging in scientific reasoning, limiting autonomy in discovery. We introduce Materials Agents for Simulation and Theory in Electronic-structure Reasoning (MASTER), an active learning framework where large language models autonomously design, execute, and interpret atomistic simulations. In MASTER, a multimodal system translates natural language into density functional theory workflow"
+  },
+  {
+    "id": "2407.08029",
+    "title": "A Critical Review of Causal Reasoning Benchmarks for Large Language Models",
+    "year": 2024,
+    "authors": "Linying Yang, Vik Shirvaikar, Oscar Clivio, Fabian Falck",
+    "pdf_url": "https://arxiv.org/pdf/2407.08029v1",
+    "entry_id": "http://arxiv.org/abs/2407.08029v1",
+    "summary": "Numerous benchmarks aim to evaluate the capabilities of Large Language Models (LLMs) for causal inference and reasoning. However, many of them can likely be solved through the retrieval of domain knowledge, questioning whether they achieve their purpose. In this review, we present a comprehensive overview of LLM benchmarks for causality. We highlight how recent benchmarks move towards a more thorough definition of causal reasoning by incorporating interventional or counterfactual reasoning. We d"
+  },
+  {
+    "id": "2601.12538",
+    "title": "Agentic Reasoning for Large Language Models",
+    "year": 2026,
+    "authors": "Tianxin Wei, Ting-Wei Li, Zhining Liu, Xuying Ning, Ze Yang, Jiaru Zou, Zhichen Zeng, Ruizhong Qiu",
+    "pdf_url": "https://arxiv.org/pdf/2601.12538v1",
+    "entry_id": "http://arxiv.org/abs/2601.12538v1",
+    "summary": "Reasoning is a fundamental cognitive process underlying inference, problem-solving, and decision-making. While large language models (LLMs) demonstrate strong reasoning capabilities in closed-world settings, they struggle in open-ended and dynamic environments. Agentic reasoning marks a paradigm shift by reframing LLMs as autonomous agents that plan, act, and learn through continual interaction. In this survey, we organize agentic reasoning along three complementary dimensions. First, we charact"
+  },
+  {
+    "id": "2506.02483",
+    "title": "Enhancing Large Language Models with Neurosymbolic Reasoning for Multilingual Tasks",
+    "year": 2025,
+    "authors": "Sina Bagheri Nezhad, Ameeta Agrawal",
+    "pdf_url": "https://arxiv.org/pdf/2506.02483v1",
+    "entry_id": "http://arxiv.org/abs/2506.02483v1",
+    "summary": "Large language models (LLMs) often struggle to perform multi-target reasoning in long-context scenarios where relevant information is scattered across extensive documents. To address this challenge, we introduce NeuroSymbolic Augmented Reasoning (NSAR), which combines the benefits of neural and symbolic reasoning during inference. NSAR explicitly extracts symbolic facts from text and generates executable Python code to handle complex reasoning steps. Through extensive experiments across seven la"
+  },
+  {
+    "id": "2504.15466",
+    "title": "Learning Adaptive Parallel Reasoning with Language Models",
+    "year": 2025,
+    "authors": "Jiayi Pan, Xiuyu Li, Long Lian, Charlie Snell, Yifei Zhou, Adam Yala, Trevor Darrell, Kurt Keutzer",
+    "pdf_url": "https://arxiv.org/pdf/2504.15466v2",
+    "entry_id": "http://arxiv.org/abs/2504.15466v2",
+    "summary": "Scaling inference-time computation has substantially improved the reasoning capabilities of language models. However, existing methods have significant limitations: serialized chain-of-thought approaches generate overly long outputs, leading to increased latency and exhausted context windows, while parallel methods such as self-consistency suffer from insufficient coordination, resulting in redundant computations and limited performance gains. To address these shortcomings, we propose Adaptive P"
+  },
+  {
+    "id": "2407.04973",
+    "title": "LogicVista: Multimodal LLM Logical Reasoning Benchmark in Visual Contexts",
+    "year": 2024,
+    "authors": "Yijia Xiao, Edward Sun, Tianyu Liu, Wei Wang",
+    "pdf_url": "https://arxiv.org/pdf/2407.04973v1",
+    "entry_id": "http://arxiv.org/abs/2407.04973v1",
+    "summary": "We propose LogicVista, an evaluation benchmark that assesses the integrated logical reasoning capabilities of multimodal large language models (MLLMs) in Visual contexts. Recent advancements in MLLMs have demonstrated various fascinating abilities, from crafting poetry based on an image to performing mathematical reasoning. However, there is still a lack of systematic evaluation of MLLMs' proficiency in logical reasoning tasks, which are essential for activities like navigation and puzzle-solvin"
+  },
+  {
+    "id": "2508.01191",
+    "title": "Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens",
+    "year": 2025,
+    "authors": "Chengshuai Zhao, Zhen Tan, Pingchuan Ma, Dawei Li, Bohan Jiang, Yancheng Wang, Yingzhen Yang, Huan Liu",
+    "pdf_url": "https://arxiv.org/pdf/2508.01191v4",
+    "entry_id": "http://arxiv.org/abs/2508.01191v4",
+    "summary": "Chain-of-Thought (CoT) prompting has been shown to be effective in eliciting structured reasoning (i.e., CoT reasoning) from large language models (LLMs). Regardless of its popularity, recent studies expose its failures in some reasoning tasks, raising fundamental questions about the nature of CoT reasoning. In this work, we propose a data distribution lens to understand when and why CoT reasoning succeeds or fails. We hypothesize that CoT reasoning reflects a structured inductive bias learned f"
+  },
+  {
+    "id": "2601.09446",
+    "title": "Improving Symbolic Translation of Language Models for Logical Reasoning",
+    "year": 2026,
+    "authors": "Ramya Keerthy Thatikonda, Jiuzhou Han, Wray Buntine, Ehsan Shareghi",
+    "pdf_url": "https://arxiv.org/pdf/2601.09446v1",
+    "entry_id": "http://arxiv.org/abs/2601.09446v1",
+    "summary": "The use of formal language for deductive logical reasoning aligns well with language models (LMs), where translating natural language (NL) into first-order logic (FOL) and employing an external solver results in a verifiable and therefore reliable reasoning system. However, smaller LMs often struggle with this translation task, frequently producing incorrect symbolic outputs due to formatting and translation errors. Existing approaches typically rely on self-iteration to correct these errors, bu"
+  },
+  {
+    "id": "2503.16419",
+    "title": "Stop Overthinking: A Survey on Efficient Reasoning for Large Language Models",
+    "year": 2025,
+    "authors": "Yang Sui, Yu-Neng Chuang, Guanchu Wang, Jiamu Zhang, Tianyi Zhang, Jiayi Yuan, Hongyi Liu, Andrew Wen",
+    "pdf_url": "https://arxiv.org/pdf/2503.16419v4",
+    "entry_id": "http://arxiv.org/abs/2503.16419v4",
+    "summary": "Large Language Models (LLMs) have demonstrated remarkable capabilities in complex tasks. Recent advancements in Large Reasoning Models (LRMs), such as OpenAI o1 and DeepSeek-R1, have further improved performance in System-2 reasoning domains like mathematics and programming by harnessing supervised fine-tuning (SFT) and reinforcement learning (RL) techniques to enhance the Chain-of-Thought (CoT) reasoning. However, while longer CoT reasoning sequences improve performance, they also introduce sig"
+  },
+  {
+    "id": "2503.24377",
+    "title": "Harnessing the Reasoning Economy: A Survey of Efficient Reasoning for Large Language Models",
+    "year": 2025,
+    "authors": "Rui Wang, Hongru Wang, Boyang Xue, Jianhui Pang, Shudong Liu, Yi Chen, Jiahao Qiu, Derek Fai Wong",
+    "pdf_url": "https://arxiv.org/pdf/2503.24377v1",
+    "entry_id": "http://arxiv.org/abs/2503.24377v1",
+    "summary": "Recent advancements in Large Language Models (LLMs) have significantly enhanced their ability to perform complex reasoning tasks, transitioning from fast and intuitive thinking (System 1) to slow and deep reasoning (System 2). While System 2 reasoning improves task accuracy, it often incurs substantial computational costs due to its slow thinking nature and inefficient or unnecessary reasoning behaviors. In contrast, System 1 reasoning is computationally efficient but leads to suboptimal perform"
+  },
+  {
+    "id": "2602.06176",
+    "title": "Large Language Model Reasoning Failures",
+    "year": 2026,
+    "authors": "Peiyang Song, Pengrui Han, Noah Goodman",
+    "pdf_url": "https://arxiv.org/pdf/2602.06176v1",
+    "entry_id": "http://arxiv.org/abs/2602.06176v1",
+    "summary": "Large Language Models (LLMs) have exhibited remarkable reasoning capabilities, achieving impressive results across a wide range of tasks. Despite these advances, significant reasoning failures persist, occurring even in seemingly simple scenarios. To systematically understand and address these shortcomings, we present the first comprehensive survey dedicated to reasoning failures in LLMs. We introduce a novel categorization framework that distinguishes reasoning into embodied and non-embodied ty"
+  },
+  {
+    "id": "2409.15256",
+    "title": "Behavioral Bias of Vision-Language Models: A Behavioral Finance View",
+    "year": 2024,
+    "authors": "Yuhang Xiao, Yudi Lin, Ming-Chang Chiu",
+    "pdf_url": "https://arxiv.org/pdf/2409.15256v1",
+    "entry_id": "http://arxiv.org/abs/2409.15256v1",
+    "summary": "Large Vision-Language Models (LVLMs) evolve rapidly as Large Language Models (LLMs) was equipped with vision modules to create more human-like models. However, we should carefully evaluate their applications in different domains, as they may possess undesired biases. Our work studies the potential behavioral biases of LVLMs from a behavioral finance perspective, an interdisciplinary subject that jointly considers finance and psychology. We propose an end-to-end framework, from data collection to"
+  },
+  {
+    "id": "2406.06592",
+    "title": "Improve Mathematical Reasoning in Language Models by Automated Process Supervision",
+    "year": 2024,
+    "authors": "Liangchen Luo, Yinxiao Liu, Rosanne Liu, Samrat Phatale, Meiqi Guo, Harsh Lara, Yunxuan Li, Lei Shu",
+    "pdf_url": "https://arxiv.org/pdf/2406.06592v2",
+    "entry_id": "http://arxiv.org/abs/2406.06592v2",
+    "summary": "Complex multi-step reasoning tasks, such as solving mathematical problems or generating code, remain a significant hurdle for even the most advanced large language models (LLMs). Verifying LLM outputs with an Outcome Reward Model (ORM) is a standard inference-time technique aimed at enhancing the reasoning performance of LLMs. However, this still proves insufficient for reasoning tasks with a lengthy or multi-hop reasoning chain, where the intermediate outcomes are neither properly rewarded nor "
+  },
+  {
+    "id": "2509.22558",
+    "title": "StepORLM: A Self-Evolving Framework With Generative Process Supervision For Operations Research Language Models",
+    "year": 2025,
+    "authors": "Chenyu Zhou, Tianyi Xu, Jianghao Lin, Dongdong Ge",
+    "pdf_url": "https://arxiv.org/pdf/2509.22558v2",
+    "entry_id": "http://arxiv.org/abs/2509.22558v2",
+    "summary": "Large Language Models (LLMs) have shown promising capabilities for solving Operations Research (OR) problems. While reinforcement learning serves as a powerful paradigm for LLM training on OR problems, existing works generally face two key limitations. First, outcome reward suffers from the credit assignment problem, where correct final answers can reinforce flawed reasoning. Second, conventional discriminative process supervision is myopic, failing to evaluate the interdependent steps of OR mod"
+  },
+  {
+    "id": "2503.18494",
+    "title": "Verbal Process Supervision Elicits Better Coding Agents",
+    "year": 2025,
+    "authors": "Hao-Yuan Chen, Cheng-Pong Huang, Jui-Ming Yao",
+    "pdf_url": "https://arxiv.org/pdf/2503.18494v1",
+    "entry_id": "http://arxiv.org/abs/2503.18494v1",
+    "summary": "The emergence of large language models and their applications as AI agents have significantly advanced state-of-the-art code generation benchmarks, transforming modern software engineering tasks. However, even with test-time computed reasoning models, these systems still struggle with complex software engineering challenges. This work introduces CURA, a code understanding and reasoning agent system enhanced with verbal process supervision (VPS), achieving a 3.65\\% improvement over baseline model"
+  },
+  {
+    "id": "2411.11681",
+    "title": "PSPO*: An Effective Process-supervised Policy Optimization for Reasoning Alignment",
+    "year": 2024,
+    "authors": "Jiawei Li, Xinyue Liang, Junlong Zhang, Yizhe Yang, Chong Feng, Yang Gao",
+    "pdf_url": "https://arxiv.org/pdf/2411.11681v3",
+    "entry_id": "http://arxiv.org/abs/2411.11681v3",
+    "summary": "Process supervision enhances the performance of large language models in reasoning tasks by providing feedback at each step of chain-of-thought reasoning. However, due to the lack of effective process supervision methods, even advanced large language models are prone to logical errors and redundant reasoning. We claim that the effectiveness of process supervision significantly depends on both the accuracy and the length of reasoning chains. Moreover, we identify that these factors exhibit a nonl"
+  },
+  {
+    "id": "2501.01478",
+    "title": "Enhancing Reasoning through Process Supervision with Monte Carlo Tree Search",
+    "year": 2025,
+    "authors": "Shuangtao Li, Shuaihao Dong, Kexin Luan, Xinhan Di, Chaofan Ding",
+    "pdf_url": "https://arxiv.org/pdf/2501.01478v1",
+    "entry_id": "http://arxiv.org/abs/2501.01478v1",
+    "summary": "Large language models (LLMs) have demonstrated their remarkable capacity across a variety of tasks. However, reasoning remains a challenge for LLMs. To improve LLMs' reasoning ability, process supervision has proven to be better than outcome supervision. In this work, we study using Monte Carlo Tree Search (MCTS) to generate process supervision data with LLMs themselves for training them. We sample reasoning steps with an LLM and assign each step a score that captures its \"relative correctness,\""
+  },
+  {
+    "id": "2502.10581",
+    "title": "Do We Need to Verify Step by Step? Rethinking Process Supervision from a Theoretical Perspective",
+    "year": 2025,
+    "authors": "Zeyu Jia, Alexander Rakhlin, Tengyang Xie",
+    "pdf_url": "https://arxiv.org/pdf/2502.10581v2",
+    "entry_id": "http://arxiv.org/abs/2502.10581v2",
+    "summary": "As large language models have evolved, it has become crucial to distinguish between process supervision and outcome supervision -- two key reinforcement learning approaches to complex reasoning tasks. While process supervision offers intuitive advantages for long-term credit assignment, the precise relationship between these paradigms has remained an open question. Conventional wisdom suggests that outcome supervision is fundamentally more challenging due to the trajectory-level coverage problem"
+  },
+  {
+    "id": "2405.03553",
+    "title": "AlphaMath Almost Zero: Process Supervision without Process",
+    "year": 2024,
+    "authors": "Guoxin Chen, Minpeng Liao, Chengxi Li, Kai Fan",
+    "pdf_url": "https://arxiv.org/pdf/2405.03553v3",
+    "entry_id": "http://arxiv.org/abs/2405.03553v3",
+    "summary": "Although recent advancements in large language models (LLMs) have significantly improved their performance on various tasks, they still face challenges with complex and symbolic multi-step reasoning, particularly in mathematical reasoning. To bolster the mathematical reasoning capabilities of LLMs, most existing efforts concentrate on seeking assistance from either domain experts or GPT-4 for high-quality process-supervised data, which is not only expensive but also labor-intensive. In our study"
+  },
+  {
+    "id": "2503.04618",
+    "title": "Better Process Supervision with Bi-directional Rewarding Signals",
+    "year": 2025,
+    "authors": "Wenxiang Chen, Wei He, Zhiheng Xi, Honglin Guo, Boyang Hong, Jiazheng Zhang, Rui Zheng, Nijun Li",
+    "pdf_url": "https://arxiv.org/pdf/2503.04618v1",
+    "entry_id": "http://arxiv.org/abs/2503.04618v1",
+    "summary": "Process supervision, i.e., evaluating each step, is critical for complex large language model (LLM) reasoning and test-time searching with increased inference compute. Existing approaches, represented by process reward models (PRMs), primarily focus on rewarding signals up to the current step, exhibiting a one-directional nature and lacking a mechanism to model the distance to the final target. To address this problem, we draw inspiration from the A* algorithm, which states that an effective sup"
+  },
+  {
+    "id": "2412.15251",
+    "title": "AgentPS: Agentic Process Supervision for Content Moderation with Multimodal LLMs",
+    "year": 2024,
+    "authors": "Mingchao Liu, Yu Sun, Ruixiao Sun, Xin Dong, Xiang Shen, Hongyu Xiong",
+    "pdf_url": "https://arxiv.org/pdf/2412.15251v2",
+    "entry_id": "http://arxiv.org/abs/2412.15251v2",
+    "summary": "The advanced processing and reasoning capabilities of multimodal large language models (MLLMs) have driven substantial progress in vision-language (VL) understanding tasks. However, while effective for tasks governed by straightforward logic, MLLMs often struggle with reasoning complex, detail-intensive logical structures. To address this limitation, we introduce AgentPS, a novel framework that integrates Agentic Process Supervision into MLLMs by sequentially reasoning over ancillary questions d"
+  },
+  {
+    "id": "2503.02382",
+    "title": "An Efficient and Precise Training Data Construction Framework for Process-supervised Reward Model in Mathematical Reasoning",
+    "year": 2025,
+    "authors": "Wei Sun, Qianlong Du, Fuwei Cui, Jiajun Zhang",
+    "pdf_url": "https://arxiv.org/pdf/2503.02382v2",
+    "entry_id": "http://arxiv.org/abs/2503.02382v2",
+    "summary": "Enhancing the mathematical reasoning capabilities of Large Language Models (LLMs) is of great scientific and practical significance. Researchers typically employ process-supervised reward models (PRMs) to guide the reasoning process, effectively improving the models' reasoning abilities. However, existing methods for constructing process supervision training data, such as manual annotation and per-step Monte Carlo estimation, are often costly or suffer from poor quality. To address these challen"
+  },
+  {
+    "id": "2511.01650",
+    "title": "EngTrace: A Symbolic Benchmark for Verifiable Process Supervision of Engineering Reasoning",
+    "year": 2025,
+    "authors": "Ayesha Gull, Muhammad Usman Safder, Rania Elbadry, Fan Zhang, Veselin Stoyanov, Preslav Nakov, Zhuohan Xie",
+    "pdf_url": "https://arxiv.org/pdf/2511.01650v2",
+    "entry_id": "http://arxiv.org/abs/2511.01650v2",
+    "summary": "Large Language Models (LLMs) are increasingly entering specialized, safety-critical engineering workflows governed by strict quantitative standards and immutable physical laws, making rigorous evaluation of their reasoning capabilities imperative. However, existing benchmarks such as MMLU, MATH, and HumanEval assess isolated cognitive skills, failing to capture the physically grounded reasoning central to engineering, where scientific principles, quantitative modeling, and practical constraints "
+  },
+  {
+    "id": "2506.15498",
+    "title": "SPARE: Single-Pass Annotation with Reference-Guided Evaluation for Automatic Process Supervision and Reward Modelling",
+    "year": 2025,
+    "authors": "Md Imbesat Hassan Rizvi, Xiaodan Zhu, Iryna Gurevych",
+    "pdf_url": "https://arxiv.org/pdf/2506.15498v2",
+    "entry_id": "http://arxiv.org/abs/2506.15498v2",
+    "summary": "Process or step-wise supervision has played a crucial role in advancing complex multi-step reasoning capabilities of Large Language Models (LLMs). However, efficient, high-quality automated process annotation remains a significant challenge. To address this, we introduce Single-Pass Annotation with Reference-Guided Evaluation (SPARE), a novel structured framework that enables efficient per-step annotation by jointly aligning solution steps to reference solutions and determine its accuracy with e"
+  },
+  {
+    "id": "2508.12604",
+    "title": "SSPO: Self-traced Step-wise Preference Optimization for Process Supervision and Reasoning Compression",
+    "year": 2025,
+    "authors": "Yuyang Xu, Yi Cheng, Haochao Ying, Zhuoyun Du, Renjun Hu, Xing Shi, Wei Lin, Jian Wu",
+    "pdf_url": "https://arxiv.org/pdf/2508.12604v1",
+    "entry_id": "http://arxiv.org/abs/2508.12604v1",
+    "summary": "Test-time scaling has proven effective in further enhancing the performance of pretrained Large Language Models (LLMs). However, mainstream post-training methods (i.e., reinforcement learning (RL) with chain-of-thought (CoT) reasoning) often incur substantial computational overhead due to auxiliary models and overthinking. In this paper, we empirically reveal that the incorrect answers partially stem from verbose reasoning processes lacking correct self-fix, where errors accumulate across multip"
+  },
+  {
+    "id": "2502.01715",
+    "title": "Process-Supervised Reinforcement Learning for Code Generation",
+    "year": 2025,
+    "authors": "Yufan Ye, Ting Zhang, Wenbin Jiang, Hua Huang",
+    "pdf_url": "https://arxiv.org/pdf/2502.01715v1",
+    "entry_id": "http://arxiv.org/abs/2502.01715v1",
+    "summary": "Existing reinforcement learning strategies based on outcome supervision have proven effective in enhancing the performance of large language models(LLMs) for code generation. While reinforcement learning based on process supervision has shown great promise in handling multi-step reasoning tasks, its effectiveness in code generation remains largely underexplored and underjustified. The primary obstacle stems from the resource-intensive nature of constructing high-quality process-supervised data, "
+  },
+  {
+    "id": "2412.08393",
+    "title": "Learning to Reason via Self-Iterative Process Feedback for Small Language Models",
+    "year": 2024,
+    "authors": "Kaiyuan Chen, Jin Wang, Xuejie Zhang",
+    "pdf_url": "https://arxiv.org/pdf/2412.08393v1",
+    "entry_id": "http://arxiv.org/abs/2412.08393v1",
+    "summary": "Small language models (SLMs) are more efficient, cost-effective, and customizable than large language models (LLMs), though they often underperform in specific areas like reasoning. Past methods for enhancing SLMs' reasoning, such as supervised fine-tuning and distillation, often depend on costly external signals, resulting in SLMs being overly confident with limited supervision signals, thus limiting their abilities. Therefore, this study enables SLMs to learn to reason from self-iterative feed"
+  },
+  {
+    "id": "2409.13752",
+    "title": "Thinking Before Speaking: A Role-playing Model with Mindset",
+    "year": 2024,
+    "authors": "Baohua Zhang, Yongyi Huang, Wenyao Cui, Huaping Zhang",
+    "pdf_url": "https://arxiv.org/pdf/2409.13752v1",
+    "entry_id": "http://arxiv.org/abs/2409.13752v1",
+    "summary": "Role-playing is an easy task for Large Language Models (LLMs), as they are skilled at simulating human behaviors. Many current studies have enabled LLMs to generate responses in the tone of a specific role by fine-tuning the models or using specialized prompts. However, it is typically easy to recognize when a role is being played by LLMs. These models tend to perform poorly when confronted with knowledge that the assumed role does not possess, or a question that requires the specific experience"
+  },
+  {
+    "id": "2403.09629",
+    "title": "Quiet-STaR: Language Models Can Teach Themselves to Think Before Speaking",
+    "year": 2024,
+    "authors": "Eric Zelikman, Georges Harik, Yijia Shao, Varuna Jayasiri, Nick Haber, Noah D. Goodman",
+    "pdf_url": "https://arxiv.org/pdf/2403.09629v2",
+    "entry_id": "http://arxiv.org/abs/2403.09629v2",
+    "summary": "When writing and talking, people sometimes pause to think. Although reasoning-focused works have often framed reasoning as a method of answering questions or completing agentic tasks, reasoning is implicit in almost all written text. For example, this applies to the steps not stated between the lines of a proof or to the theory of mind underlying a conversation. In the Self-Taught Reasoner (STaR, Zelikman et al. 2022), useful thinking is learned by inferring rationales from few-shot examples in "
+  },
+  {
+    "id": "2311.07445",
+    "title": "Think Before You Speak: Cultivating Communication Skills of Large Language Models via Inner Monologue",
+    "year": 2023,
+    "authors": "Junkai Zhou, Liang Pang, Huawei Shen, Xueqi Cheng",
+    "pdf_url": "https://arxiv.org/pdf/2311.07445v2",
+    "entry_id": "http://arxiv.org/abs/2311.07445v2",
+    "summary": "The emergence of large language models (LLMs) further improves the capabilities of open-domain dialogue systems and can generate fluent, coherent, and diverse responses. However, LLMs still lack a crucial ability: communication skills. This limitation renders them more like information seeking tools rather than anthropomorphic chatbots. Communication skills, such as topic transition, proactively asking questions, concept guidance, empathy, and summarising often should be taken into consideration"
+  },
+  {
+    "id": "2602.15861",
+    "title": "CAST: Achieving Stable LLM-based Text Analysis for Data Analytics",
+    "year": 2026,
+    "authors": "Jinxiang Xie, Zihao Li, Wei He, Rui Ding, Shi Han, Dongmei Zhang",
+    "pdf_url": "https://arxiv.org/pdf/2602.15861v1",
+    "entry_id": "http://arxiv.org/abs/2602.15861v1",
+    "summary": "Text analysis of tabular data relies on two core operations: \\emph{summarization} for corpus-level theme extraction and \\emph{tagging} for row-level labeling. A critical limitation of employing large language models (LLMs) for these tasks is their inability to meet the high standards of output stability demanded by data analytics. To address this challenge, we introduce \\textbf{CAST} (\\textbf{C}onsistency via \\textbf{A}lgorithmic Prompting and \\textbf{S}table \\textbf{T}hinking), a framework that"
+  },
+  {
+    "id": "2601.17275",
+    "title": "Latent-Space Contrastive Reinforcement Learning for Stable and Efficient LLM Reasoning",
+    "year": 2026,
+    "authors": "Lianlei Shan, Han Chen, Yixuan Wang, Zhenjie Liu, Wei Li",
+    "pdf_url": "https://arxiv.org/pdf/2601.17275v1",
+    "entry_id": "http://arxiv.org/abs/2601.17275v1",
+    "summary": "While Large Language Models (LLMs) demonstrate exceptional performance in surface-level text generation, their nature in handling complex multi-step reasoning tasks often remains one of ``statistical fitting'' rather than systematic logical deduction. Traditional Reinforcement Learning (RL) attempts to mitigate this by introducing a ``think-before-speak'' paradigm. However, applying RL directly in high-dimensional, discrete token spaces faces three inherent challenges: sample-inefficient rollout"
+  }
+]
